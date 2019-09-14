@@ -25,7 +25,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="一、准备工作 Github账号 nodejs npm git for windows  二、创建github仓库 创建以你的用户名.github.io的仓库  三、域名绑定(可选)四、配置SSH key 为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。   用git bash执行如下">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-14T16:09:13.311Z">
+<meta property="og:updated_time" content="2019-09-14T16:25:50.428Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Github搭建Hexo个人博客">
 <meta name="twitter:description" content="一、准备工作 Github账号 nodejs npm git for windows  二、创建github仓库 创建以你的用户名.github.io的仓库  三、域名绑定(可选)四、配置SSH key 为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。   用git bash执行如下">
@@ -480,6 +480,12 @@
   </article>
   
     
+  <section id="comments">
+  	
+      <div id="vcomments"></div>
+    
+  </section>
+
 
   
 </div>
@@ -620,6 +626,33 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
 
+
+
+   
+    
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/valine"></script>
+  <script type="text/javascript">
+  var GUEST = ['nick', 'mail', 'link'];
+  var meta = 'nick,mail,link';
+  meta = meta.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#vcomments',
+    verify: false,
+    notify: false,
+    appId: '',
+    appKey: '',
+    placeholder: 'Just go go',
+    avatar: 'mm',
+    meta: meta,
+    pageSize: '10' || 10,
+    visitor: false
+  });
+  </script>
+
+     
 
 
 
