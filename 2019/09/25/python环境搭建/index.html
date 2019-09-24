@@ -17,23 +17,20 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Go语言起源 | Yang&#39;s Blog</title>
-  <meta name="description" content="Go语言的前世今生时代背景当今社会主流语言基本都诞生于上世纪90年代或者更早，例如Python(1991)、Java(1995)、C(1972)、C++(1983)、JavaScript(1995)、C#(2001)、PHP(1995)等等，同时我们也需要明白计算机硬件的发展，在2005年4月，英特尔的第一款双核处理器平台包括采用英特尔955X高速芯片组、主频为3.2GHz的英特尔奔腾处理器至尊版">
+  <title>python环境搭建 | Yang&#39;s Blog</title>
+  <meta name="description" content="Python2.x VS Python3.x为什么会有python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么Python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言起源">
-<meta property="og:url" content="https://elijahyg.github.io/2019/09/22/Go语言起源/index.html">
+<meta property="og:title" content="python环境搭建">
+<meta property="og:url" content="https://elijahyg.github.io/2019/09/25/python环境搭建/index.html">
 <meta property="og:site_name" content="Yang&#39;s Blog">
-<meta property="og:description" content="Go语言的前世今生时代背景当今社会主流语言基本都诞生于上世纪90年代或者更早，例如Python(1991)、Java(1995)、C(1972)、C++(1983)、JavaScript(1995)、C#(2001)、PHP(1995)等等，同时我们也需要明白计算机硬件的发展，在2005年4月，英特尔的第一款双核处理器平台包括采用英特尔955X高速芯片组、主频为3.2GHz的英特尔奔腾处理器至尊版">
+<meta property="og:description" content="Python2.x VS Python3.x为什么会有python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么Python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/trending.png">
-<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/go_companies.jpg">
-<meta property="og:updated_time" content="2019-09-21T17:30:43.975Z">
+<meta property="og:updated_time" content="2019-09-24T16:19:07.654Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言起源">
-<meta name="twitter:description" content="Go语言的前世今生时代背景当今社会主流语言基本都诞生于上世纪90年代或者更早，例如Python(1991)、Java(1995)、C(1972)、C++(1983)、JavaScript(1995)、C#(2001)、PHP(1995)等等，同时我们也需要明白计算机硬件的发展，在2005年4月，英特尔的第一款双核处理器平台包括采用英特尔955X高速芯片组、主频为3.2GHz的英特尔奔腾处理器至尊版">
-<meta name="twitter:image" content="https://elijahyg.github.io/images/post_imgs/trending.png">
+<meta name="twitter:title" content="python环境搭建">
+<meta name="twitter:description" content="Python2.x VS Python3.x为什么会有python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么Python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://elijahyg.github.io/2019/09/22/Go语言起源/index.html">
+  <link rel="canonical" href="https://elijahyg.github.io/2019/09/25/python环境搭建/index.html">
   
   
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
@@ -380,21 +377,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Go语言的前世今生"><span class="toc-number">1.</span> <span class="toc-text">Go语言的前世今生</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#时代背景"><span class="toc-number">1.1.</span> <span class="toc-text">时代背景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go语言的诞生"><span class="toc-number">1.2.</span> <span class="toc-text">Go语言的诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go语言的主要特性"><span class="toc-number">1.3.</span> <span class="toc-text">Go语言的主要特性</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GO语言的主要特性主要包括"><span class="toc-number">1.3.1.</span> <span class="toc-text">GO语言的主要特性主要包括</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Go语言的应用前景"><span class="toc-number">1.4.</span> <span class="toc-text">Go语言的应用前景</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python2-x-VS-Python3-x"><span class="toc-number">1.</span> <span class="toc-text">Python2.x VS Python3.x</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么会有python3-x"><span class="toc-number">1.1.</span> <span class="toc-text">为什么会有python3.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#官方对于Python2-x和Python3-x的总结"><span class="toc-number">1.2.</span> <span class="toc-text">官方对于Python2.x和Python3.x的总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-IDE介绍"><span class="toc-number">2.</span> <span class="toc-text">Python IDE介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pycharm"><span class="toc-number">2.1.</span> <span class="toc-text">Pycharm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sublime"><span class="toc-number">2.2.</span> <span class="toc-text">Sublime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eclipse-Pydev"><span class="toc-number">2.3.</span> <span class="toc-text">Eclipse+Pydev</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#不同OS下Python开发环境搭建"><span class="toc-number">3.</span> <span class="toc-text">不同OS下Python开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#virtualenv-amp-pipenv介绍"><span class="toc-number">3.1.</span> <span class="toc-text">virtualenv &amp; pipenv介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下Python环境搭建"><span class="toc-number">3.2.</span> <span class="toc-text">Windows下Python环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-CentOS7-x-下python环境搭建"><span class="toc-number">3.3.</span> <span class="toc-text">Linux(CentOS7.x)下python环境搭建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mac下python环境搭建"><span class="toc-number">3.4.</span> <span class="toc-text">mac下python环境搭建</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Go语言起源" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-python环境搭建" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Go语言起源
+      python环境搭建
     </h1>
   
 
@@ -402,14 +399,14 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/09/22/Go语言起源/" class="article-date">
-	  <time datetime="2019-09-21T17:19:47.000Z" itemprop="datePublished">2019-09-22</time>
+	<a href="/2019/09/25/python环境搭建/" class="article-date">
+	  <time datetime="2019-09-24T16:18:12.000Z" itemprop="datePublished">2019-09-25</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Go系列/">Go系列</a>
+    <a class="article-category-link" href="/categories/Python系列/">Python系列</a>
   </span>
 
         
@@ -423,40 +420,29 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/22/Go语言起源/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/25/python环境搭建/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 802(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1.1k(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 4(minutes)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="Go语言的前世今生"><a href="#Go语言的前世今生" class="headerlink" title="Go语言的前世今生"></a>Go语言的前世今生</h2><h3 id="时代背景"><a href="#时代背景" class="headerlink" title="时代背景"></a>时代背景</h3><p>当今社会主流语言基本都诞生于上世纪90年代或者更早，例如Python(1991)、Java(1995)、C(1972)、C++(1983)、JavaScript(1995)、C#(2001)、PHP(1995)等等，同时我们也需要明白计算机硬件的发展，在2005年4月，英特尔的第一款双核处理器平台包括采用英特尔955X高速芯片组、主频为3.2GHz的英特尔奔腾处理器至尊版840，此款产品的问世标志着一个新时代来临了，那就是双核和多核处理器的时代。我们结合这些标志性的事件来看就不难发现，主流的服务端语言诞生的年代还都是单核年代，也就是说，当时的编程语言还是单核环境下，也就没有我们现在大家耳熟能详的并发编程概念。</p>
-<p><a href="https://spectrum.ieee.org/static/interactive-the-top-programming-languages-2019?utm_source=spectrum-hero" title="2019年9月编程语言趋势" target="_blank" rel="noopener"><img src="/images/post_imgs/trending.png" alt="2019年9月编程语言趋势" title="2019年9月编程语言趋势"></a></p>
-<hr>
-<h3 id="Go语言的诞生"><a href="#Go语言的诞生" class="headerlink" title="Go语言的诞生"></a>Go语言的诞生</h3><p>Go（又称Golang）是Google开发的一种静态强类型、编译型、并发型，并具有垃圾回收功能的编程语言。<br>罗伯特·格瑞史莫，罗勃·派克（Rob Pike）及肯·汤普逊于2007年9月开始设计Go，谷歌把Go作为一个20%项目开始研发，即让员工抽出本职工作之外时间的20%，投入在该项目上，稍后Ian Lance Taylor、Russ Cox加入项目。Go是基于Inferno操作系统所开发的。Go于2009年11月正式宣布推出，成为开放源代码项目，支持Linux、Mac OS X、Windows等操作系统。<br>对比上文所举的编程语言，在Go语言诞生的2007年，那时候已经处于双核时代，这就造就了Go语言在设计之初就考虑到了多核CPU下的程序运行，这也就造就了Go语言天生支持多核环境下编程的天赋技能。</p>
-<hr>
-<h3 id="Go语言的主要特性"><a href="#Go语言的主要特性" class="headerlink" title="Go语言的主要特性"></a>Go语言的主要特性</h3><p>Google是这样描述Go语言的：“<a href="https://techcrunch.com/2009/11/10/google-go-language/" title="试图将像Python这样的动态语言的工作开发速度与C或C ++等编译语言的性能和安全性结合起来。在我们的Go to date实验中，典型的构建感觉瞬间完成; 甚至大型二进制文件只需几秒钟即可编译。编译后的代码接近C的速度.Go旨在让您快速移动。我们希望Go成为一种优秀的系统编程语言，支持多处理和面向对象设计的全新轻量化，具有真正的闭包和反射等一些很酷的功能。" target="_blank" rel="noopener">试图将像Python这样的动态语言的工作开发速度与C或C ++等编译语言的性能和安全性结合起来。在我们的Go to date实验中，典型的构建感觉瞬间完成; 甚至大型二进制文件只需几秒钟即可编译。编译后的代码接近C的速度.Go旨在让您快速移动。我们希望Go成为一种优秀的系统编程语言，支持多处理和面向对象设计的全新轻量化，具有真正的闭包和反射等一些很酷的功能。</a>”</p>
-<h4 id="GO语言的主要特性主要包括"><a href="#GO语言的主要特性主要包括" class="headerlink" title="GO语言的主要特性主要包括"></a>GO语言的主要特性主要包括</h4><ul>
-<li>并发与协程</li>
-<li>基于消息传递的通信方式</li>
-<li>丰富实用的内置数据类型</li>
-<li>函数多返回值</li>
-<li>defer机制</li>
-<li>反射(reflect)</li>
-<li>高性能HTTP Server</li>
-<li>工程管理</li>
-<li>编程规范</li>
-</ul>
-<hr>
-<h3 id="Go语言的应用前景"><a href="#Go语言的应用前景" class="headerlink" title="Go语言的应用前景"></a>Go语言的应用前景</h3><p>Go语言凭借着天生的并发优势，出众的性能以及亲民的语法，迅速的蹿红各类IT领域，在人工智能、云计算开发、容器虚拟化、⼤数据开发、数据分析及科学计算、运维开发、爬虫开发、游戏开发等领域都有着广泛的应用。</p>
-<p>以下是应用Go语言的公司：<br><img src="/images/post_imgs/go_companies.jpg" alt></p>
+        <h2 id="Python2-x-VS-Python3-x"><a href="#Python2-x-VS-Python3-x" class="headerlink" title="Python2.x VS Python3.x"></a>Python2.x VS Python3.x</h2><h3 id="为什么会有python3-x"><a href="#为什么会有python3-x" class="headerlink" title="为什么会有python3.x"></a>为什么会有python3.x</h3><p>相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么Python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是什么因素导致必须要重构python核心内容呢？<br>通过多方调查，终于在Python的核心成员<strong>Brett Cannon</strong>的文章中略知其中一二。首先，我们先来看以下下面这个字符串表示什么意思？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'abcd'</span></span><br></pre></td></tr></table></figure>
 
+<p>一目了然，代表由字母’a’、’b’、’c’、’c’组成的字符串，但是，如果你是个python2的使用者，你也可能会说代表ASCII码对应的数值97、98、99、100，至此，大家就会看出问题了，那在python2.x中，字符串默认是以ASCII码的形式呈现的，这样的设计就会产生我们上面这样的歧义。正如python之禅中所说”there should be one – and preferably only one – obvious way to do it”，对于python的代码，应该做到一种呈现只对应一种可能，而上述例子中显然就违背了这样的原则。而这种歧义的产生，不单单是违背了语言的设计初衷，更严重的是这种歧义会在程序的开发中让人抓狂，因为对于字符串而言，开发者必须时刻清楚的知道它代表的到底是字符串还是二进制的数据，否则对于大型程序而言，后果不堪设想。<br>相信上面的内容会让大家清楚Python2.x所存在的重大缺陷，但是我们的问题依然没有得到很好的回答，我们还会抱有疑问“那为什么不在最开始设计的时候就避免出现这种缺陷呢？一定要在之后再做这种不兼容的修复？”，这就要回到python的诞生了，Guido于1989年12月开始对Python进行编码，并于1991年2月首次以开源形式发布。而Unicode标准的第一卷是在1991年10月发布的，这说明python在设计之初并没有所谓的unicode和ASCII编码的问题，但是随着python的应用程度越来越广泛，ASCII码已经不能满足其需要，而且unicode编码的应用和推广也越来越广泛，python2的缺陷也就显得越来越不可调和，最终导致核心团队必须将其升级来修复这个致命的问题。<br>多说一句，针对为什么python3不向下兼容的问题，Brett Cannon是这样说的，python的核心团队在设计推广python3的时候以为python社区会针对python2进行bugfix，同时转到python3，但是事实并未如此，核心团队也吃一堑长一智，并保证今后不会再有类似的不可兼容的更新升级了。</p>
+<h3 id="官方对于Python2-x和Python3-x的总结"><a href="#官方对于Python2-x和Python3-x的总结" class="headerlink" title="官方对于Python2.x和Python3.x的总结"></a>官方对于Python2.x和Python3.x的总结</h3><p><strong>In summary</strong> : Python 2.x is legacy, Python 3.x is the present and future of the language Python 3.0 was released in 2008. The final 2.x version 2.7 release came out in mid-2010, with a statement of extended support for this end-of-life release. The 2.x branch will see no new major releases after that. 3.x is under active development and has already seen over five years of stable releases, including version 3.3 in 2012, 3.4 in 2014, and 3.5 in 2015. This means that all recent standard library improvements, for example, are only available by default in Python 3.x.</p>
+<p><strong>Guido van Rossum</strong> (the original creator of the Python language) decided to clean up Python 2.x properly, with less regard for backwards compatibility than is the case for new releases in the 2.x range. The most drastic improvement is the better Unicode support (with all text strings being Unicode by default) as well as saner bytes/Unicode separation.</p>
+<p><strong>Besides</strong>, several aspects of the core language (such as print and exec being statements, integers using floor division) have been adjusted to be easier for newcomers to learn and to be more consistent with the rest of the language, and old cruft has been removed (for example, all classes are now new-style, “range()” returns a memory efficient iterable, not a list as in 2.x).</p>
+<hr>
+<h2 id="Python-IDE介绍"><a href="#Python-IDE介绍" class="headerlink" title="Python IDE介绍"></a>Python IDE介绍</h2><h3 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h3><h3 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h3><h3 id="Eclipse-Pydev"><a href="#Eclipse-Pydev" class="headerlink" title="Eclipse+Pydev"></a>Eclipse+Pydev</h3><hr>
+<h2 id="不同OS下Python开发环境搭建"><a href="#不同OS下Python开发环境搭建" class="headerlink" title="不同OS下Python开发环境搭建"></a>不同OS下Python开发环境搭建</h2><h3 id="virtualenv-amp-pipenv介绍"><a href="#virtualenv-amp-pipenv介绍" class="headerlink" title="virtualenv &amp; pipenv介绍"></a>virtualenv &amp; pipenv介绍</h3><h3 id="Windows下Python环境搭建"><a href="#Windows下Python环境搭建" class="headerlink" title="Windows下Python环境搭建"></a>Windows下Python环境搭建</h3><h3 id="Linux-CentOS7-x-下python环境搭建"><a href="#Linux-CentOS7-x-下python环境搭建" class="headerlink" title="Linux(CentOS7.x)下python环境搭建"></a>Linux(CentOS7.x)下python环境搭建</h3><h3 id="mac下python环境搭建"><a href="#mac下python环境搭建" class="headerlink" title="mac下python环境搭建"></a>mac下python环境搭建</h3>
       
     </div>
     <div class="article-footer">
@@ -465,7 +451,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://elijahyg.github.io/2019/09/22/Go语言起源/" title="Go语言起源" target="_blank" rel="external">https://elijahyg.github.io/2019/09/22/Go语言起源/</a>
+      <a href="https://elijahyg.github.io/2019/09/25/python环境搭建/" title="python环境搭建" target="_blank" rel="external">https://elijahyg.github.io/2019/09/25/python环境搭建/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -495,13 +481,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/09/25/python环境搭建/" title="python环境搭建"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/09/17/hello-world/" title="Hello World"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/09/22/Go语言起源/" title="Go语言起源"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
