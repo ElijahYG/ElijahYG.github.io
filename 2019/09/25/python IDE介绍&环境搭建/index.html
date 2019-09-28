@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>python IDE介绍 &amp; 环境搭建 | Yang&#39;s Blog</title>
+  <meta name="description" content="Python2.x VS Python3.x为什么会有Python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python IDE介绍 &amp; 环境搭建">
+<meta property="og:url" content="https://elijahyg.github.io/2019/09/25/python IDE介绍&环境搭建/index.html">
+<meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="Python2.x VS Python3.x为什么会有Python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/pycharm.jpeg">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/sublime.jpg">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/vs_code.png">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/win_installer.png">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/version.png">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/mac-python.jpg">
+<meta property="og:updated_time" content="2019-09-28T15:36:06.883Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python IDE介绍 &amp; 环境搭建">
+<meta name="twitter:description" content="Python2.x VS Python3.x为什么会有Python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
+<meta name="twitter:image" content="https://elijahyg.github.io/images/post_imgs/pycharm.jpeg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://elijahyg.github.io/2019/09/25/python IDE介绍&环境搭建/index.html">
+  
+  
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ElijahYG" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Elijah Yang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>顺境内敛 逆境不屈</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go系列/">Go系列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python系列/">Python系列</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/09/25/python IDE介绍&环境搭建/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/25/python IDE介绍&环境搭建/" class="title">python IDE介绍 &amp; 环境搭建</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-24T16:18:12.000Z" itemprop="datePublished">2019-09-25</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/09/22/Go语言起源/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Go系列/">Go系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/22/Go语言起源/" class="title">Go语言起源</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-21T17:19:47.000Z" itemprop="datePublished">2019-09-22</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/09/17/hello-world/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/其他/">其他</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/17/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-16T16:57:03.181Z" itemprop="datePublished">2019-09-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/09/16/python语言起源/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/16/python语言起源/" class="title">python语言起源</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-16T15:31:15.000Z" itemprop="datePublished">2019-09-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/09/16/Python系列/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/16/Python系列/" class="title">Python系列汇总</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-16T15:21:04.000Z" itemprop="datePublished">2019-09-16</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python2-x-VS-Python3-x"><span class="toc-number">1.</span> <span class="toc-text">Python2.x VS Python3.x</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么会有Python3-x"><span class="toc-number">1.1.</span> <span class="toc-text">为什么会有Python3.x</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#官方对于Python2-x和Python3-x的总结"><span class="toc-number">1.2.</span> <span class="toc-text">官方对于Python2.x和Python3.x的总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python-IDE介绍"><span class="toc-number">2.</span> <span class="toc-text">Python IDE介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Pycharm"><span class="toc-number">2.1.</span> <span class="toc-text">Pycharm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sublime"><span class="toc-number">2.2.</span> <span class="toc-text">Sublime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Visual-Studio-Code"><span class="toc-number">2.3.</span> <span class="toc-text">Visual Studio Code</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Eclipse-Pydev"><span class="toc-number">2.4.</span> <span class="toc-text">Eclipse + Pydev</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他"><span class="toc-number">2.5.</span> <span class="toc-text">其他</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Python开发环境搭建"><span class="toc-number">3.</span> <span class="toc-text">Python开发环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#两种python虚拟环境工具介绍"><span class="toc-number">3.1.</span> <span class="toc-text">两种python虚拟环境工具介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#virtualenv"><span class="toc-number">3.1.1.</span> <span class="toc-text">virtualenv</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pipenv"><span class="toc-number">3.1.2.</span> <span class="toc-text">pipenv</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下Python环境搭建"><span class="toc-number">3.2.</span> <span class="toc-text">Windows下Python环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装包种类"><span class="toc-number">3.2.1.</span> <span class="toc-text">安装包种类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#官网下载python安装包"><span class="toc-number">3.2.2.</span> <span class="toc-text">官网下载python安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#☆无UI安装"><span class="toc-number">3.2.3.</span> <span class="toc-text">☆无UI安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#验证安装"><span class="toc-number">3.2.4.</span> <span class="toc-text">验证安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-CentOS7-x-下Python环境搭建"><span class="toc-number">3.3.</span> <span class="toc-text">Linux(CentOS7.x)下Python环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装依赖包"><span class="toc-number">3.3.1.</span> <span class="toc-text">安装依赖包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载安装包解压"><span class="toc-number">3.3.2.</span> <span class="toc-text">下载安装包解压</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编译安装"><span class="toc-number">3.3.3.</span> <span class="toc-text">编译安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建软链接"><span class="toc-number">3.3.4.</span> <span class="toc-text">创建软链接</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#验证安装-1"><span class="toc-number">3.3.5.</span> <span class="toc-text">验证安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MacOS下Python环境搭建"><span class="toc-number">3.4.</span> <span class="toc-text">MacOS下Python环境搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#官网下载python安装包-1"><span class="toc-number">3.4.1.</span> <span class="toc-text">官网下载python安装包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#验证安装-2"><span class="toc-number">3.4.2.</span> <span class="toc-text">验证安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置环境变量"><span class="toc-number">3.4.3.</span> <span class="toc-text">配置环境变量</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-python IDE介绍&amp;环境搭建" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python IDE介绍 &amp; 环境搭建
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/09/25/python IDE介绍&环境搭建/" class="article-date">
+	  <time datetime="2019-09-24T16:18:12.000Z" itemprop="datePublished">2019-09-25</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python系列/">Python系列</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/25/python IDE介绍&环境搭建/#comments" class="article-comment-link">Comments</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 3.3k(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 13(minutes)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="Python2-x-VS-Python3-x"><a href="#Python2-x-VS-Python3-x" class="headerlink" title="Python2.x VS Python3.x"></a>Python2.x VS Python3.x</h2><h3 id="为什么会有Python3-x"><a href="#为什么会有Python3-x" class="headerlink" title="为什么会有Python3.x"></a>为什么会有Python3.x</h3><p>相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是什么因素导致必须要重构python核心内容呢？<br>通过多方调查，终于在Python的核心成员<strong>Brett Cannon</strong>的文章中略知其中一二。首先，我们先来看以下下面这个字符串表示什么意思？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'abcd'</span></span><br></pre></td></tr></table></figure>
+
+<p>一目了然，代表由字母’a’、’b’、’c’、’c’组成的字符串，但是，如果你是个python2的使用者，你也可能会说代表ASCII码对应的数值97、98、99、100，至此，大家就会看出问题了，那在python2.x中，字符串默认是以ASCII码的形式呈现的，这样的设计就会产生我们上面这样的歧义。正如python之禅中所说”there should be one – and preferably only one – obvious way to do it”，对于python的代码，应该做到一种呈现只对应一种可能，而上述例子中显然就违背了这样的原则。而这种歧义的产生，不单单是违背了语言的设计初衷，更严重的是这种歧义会在程序的开发中让人抓狂，因为对于字符串而言，开发者必须时刻清楚的知道它代表的到底是字符串还是二进制的数据，否则对于大型程序而言，后果不堪设想。<br>相信上面的内容会让大家清楚Python2.x所存在的重大缺陷，但是我们的问题依然没有得到很好的回答，我们还会抱有疑问“那为什么不在最开始设计的时候就避免出现这种缺陷呢？一定要在之后再做这种不兼容的修复？”，这就要回到python的诞生了，Guido于1989年12月开始对Python进行编码，并于1991年2月首次以开源形式发布。而Unicode标准的第一卷是在1991年10月发布的，这说明python在设计之初并没有所谓的unicode和ASCII编码的问题，但是随着python的应用程度越来越广泛，ASCII码已经不能满足其需要，而且unicode编码的应用和推广也越来越广泛，python2的缺陷也就显得越来越不可调和，最终导致核心团队必须将其升级来修复这个致命的问题。<br>多说一句，针对为什么python3不向下兼容的问题，Brett Cannon是这样说的，python的核心团队在设计推广python3的时候以为python社区会针对python2进行bugfix，同时转到python3，但是事实并未如此，核心团队也吃一堑长一智，并保证今后不会再有类似的不可兼容的更新升级了。</p>
+<h3 id="官方对于Python2-x和Python3-x的总结"><a href="#官方对于Python2-x和Python3-x的总结" class="headerlink" title="官方对于Python2.x和Python3.x的总结"></a>官方对于Python2.x和Python3.x的总结</h3><p><strong>In summary</strong> : Python 2.x is legacy, Python 3.x is the present and future of the language Python 3.0 was released in 2008. The final 2.x version 2.7 release came out in mid-2010, with a statement of extended support for this end-of-life release. The 2.x branch will see no new major releases after that. 3.x is under active development and has already seen over five years of stable releases, including version 3.3 in 2012, 3.4 in 2014, and 3.5 in 2015. This means that all recent standard library improvements, for example, are only available by default in Python 3.x.</p>
+<p><strong>Guido van Rossum</strong> (the original creator of the Python language) decided to clean up Python 2.x properly, with less regard for backwards compatibility than is the case for new releases in the 2.x range. The most drastic improvement is the better Unicode support (with all text strings being Unicode by default) as well as saner bytes/Unicode separation.</p>
+<p><strong>Besides</strong>, several aspects of the core language (such as print and exec being statements, integers using floor division) have been adjusted to be easier for newcomers to learn and to be more consistent with the rest of the language, and old cruft has been removed (for example, all classes are now new-style, “range()” returns a memory efficient iterable, not a list as in 2.x).</p>
+<hr>
+<h2 id="Python-IDE介绍"><a href="#Python-IDE介绍" class="headerlink" title="Python IDE介绍"></a>Python IDE介绍</h2><h3 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h3><blockquote>
+<p><a href="http://www.jetbrains.com/pycharm/download/" target="_blank" rel="noopener">http://www.jetbrains.com/pycharm/download/</a></p>
+</blockquote>
+<p>Pycharm是由JetBrains公司推出的一款专门针对python开发者的IDE，秉承JetBrains的一贯风格，Pycharm具有调试、语法高亮、项目管理、代码跳转、智能提示、自动完成、单元测试、版本控制等基本功能。同时Pycharm对于Django、Flask等常用Web框架也做到了很好的支持。需要重点提出的是Pycharm还支持IronPython解释器。</p>
+<p><img src="/images/post_imgs/pycharm.jpeg" alt></p>
+<h3 id="Sublime"><a href="#Sublime" class="headerlink" title="Sublime"></a>Sublime</h3><blockquote>
+<p><a href="https://www.sublimetext.com/3" target="_blank" rel="noopener">https://www.sublimetext.com/3</a></p>
+</blockquote>
+<p>‘A sophisticated text editor for code, markup and prose.’这是Sublime对自己的定位，不得不说sublime的强大、轻量和便捷。相比Pycharm等其他IDE的庞大，sublime作为一种“记事本”类型的IDE，深受追求简洁的开发者的热爱，同时轻量并不代表功能简单，其拥有的各种插件也是没有找不到，只有想不到。相信只要用过sublime的人就一定不会舍弃他。</p>
+<p><img src="/images/post_imgs/sublime.jpg" alt></p>
+<h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><blockquote>
+<p><a href="https://code.visualstudio.com/" target="_blank" rel="noopener">https://code.visualstudio.com/</a></p>
+</blockquote>
+<p>VS code也是一款极为优秀的IDE。这款IDE拥有丰富的python扩展工具以便开发者可以更高效的进行项目的开发，包括代码静态分析语法自动不全、科学计算工具，与Jupyter 等工具的集成，重构，单元测试，调试等等。</p>
+<p><img src="/images/post_imgs/vs_code.png" alt></p>
+<h3 id="Eclipse-Pydev"><a href="#Eclipse-Pydev" class="headerlink" title="Eclipse + Pydev"></a>Eclipse + Pydev</h3><blockquote>
+<p><a href="https://www.eclipse.org/ide/" target="_blank" rel="noopener">https://www.eclipse.org/ide/</a></p>
+</blockquote>
+<p>使用这种搭配的开发者基本上已经是个经验丰富的developer了，或者更明确的说很可能是一名Java开发老手，Eclipse这款IDE更广泛的被众多Java开发者所使用，如果已经习惯了Eclipse的操作，可以配以Pydev进行python项目的开发，可以在Eclipse中点击Help→Install new Software，添加pydev的安装地址：<a href="http://pydev.org/updates/，获取python的相关套件。具体操作方法请自行查阅，不过多赘述。" target="_blank" rel="noopener">http://pydev.org/updates/，获取python的相关套件。具体操作方法请自行查阅，不过多赘述。</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>当然python作为一种世界的编程语言，更何况现在的发展势头越来越火，IDE作为方便开发者的工具更是必不可少，以上只是介绍了极为有限的几款比较热门的python开发IDE，更多的python开发IDE请参阅：<a href="https://wiki.python.org/moin/PythonEditors" target="_blank" rel="noopener">https://wiki.python.org/moin/PythonEditors</a></p>
+<hr>
+<h2 id="Python开发环境搭建"><a href="#Python开发环境搭建" class="headerlink" title="Python开发环境搭建"></a>Python开发环境搭建</h2><h3 id="两种python虚拟环境工具介绍"><a href="#两种python虚拟环境工具介绍" class="headerlink" title="两种python虚拟环境工具介绍"></a>两种python虚拟环境工具介绍</h3><h4 id="virtualenv"><a href="#virtualenv" class="headerlink" title="virtualenv"></a>virtualenv</h4><blockquote>
+<p><a href="https://virtualenv.pypa.io/en/latest/#" target="_blank" rel="noopener">https://virtualenv.pypa.io/en/latest/#</a></p>
+</blockquote>
+<ul>
+<li><p>基本介绍<br><strong>virtualenv</strong>是用于创建隔离的Python环境，以达到不同的项目环境互不影响的目的。</p>
+</li>
+<li><p>virtualenv安装与使用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1、pip安装virtualenv</span><br><span class="line">&gt;&gt;&gt; pip install virtualenv</span><br><span class="line"></span><br><span class="line">2、验证安装是否成功</span><br><span class="line">&gt;&gt;&gt; virtualenv --version</span><br><span class="line"></span><br><span class="line">3、为项目创建隔离的python</span><br><span class="line">&gt;&gt;&gt; cd  python_project</span><br><span class="line">&gt;&gt;&gt; virtualenv python_project_env  # 这样是使用默认python解释器创建出来的项目</span><br><span class="line"></span><br><span class="line">4、也可以指定python解释器创建项目</span><br><span class="line">&gt;&gt;&gt; virtualenv -p /usr/bin/python3.7 python3_project_env</span><br><span class="line"></span><br><span class="line">5、以上就完成了python虚拟环境的创建，该环境是一个独立的python运行环境，我们在需要使用该环境时可以将其激活</span><br><span class="line">&gt;&gt;&gt; source python_project_env/bin/activate</span><br><span class="line"></span><br><span class="line">6、退出虚拟环境</span><br><span class="line">&gt;&gt;&gt; deactivate</span><br></pre></td></tr></table></figure>
+
+<h4 id="pipenv"><a href="#pipenv" class="headerlink" title="pipenv"></a>pipenv</h4><blockquote>
+<p><a href="https://pypi.org/project/pipenv/" target="_blank" rel="noopener">https://pypi.org/project/pipenv/</a></p>
+</blockquote>
+<ul>
+<li><p>基本介绍<br><strong>pipenv</strong> 是 Pipfile 、requests 作者 Kenneth Reitz 写的一个命令行工具，主要包含了Pipfile、pip、click、requests和virtualenv。Pipfile和pipenv本来都是Kenneth Reitz的个人项目，后来贡献给了pypa组织。Pipfile是社区拟定的依赖管理文件，用于替代过于简陋的 requirements.txt 文件。<br><strong>Pipfile的基本理念是：</strong>Pipfile 文件是 TOML 格式而不是 requirements.txt 这样的纯文本。一个项目对应一个 Pipfile，支持开发环境与正式环境区分。默认提供 default 和 development 区分。提供版本锁支持，存为 Pipfile.lock。</p>
+</li>
+<li><p>pipenv安装与使用</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1、pip安装pipenv</span><br><span class="line">&gt;&gt;&gt; pip install pipenv</span><br><span class="line"></span><br><span class="line">2、验证安装是否成功</span><br><span class="line">&gt;&gt;&gt; pipenv --version</span><br><span class="line"></span><br><span class="line">3、切换到项目目录</span><br><span class="line">&gt;&gt;&gt; cd  python_project</span><br><span class="line"></span><br><span class="line">4、创建虚拟环境，可以指定用python2 或者 python3作为当前虚拟环境的python版本</span><br><span class="line">&gt;&gt;&gt; pipenv --two</span><br><span class="line">&gt;&gt;&gt; pipenv --three</span><br><span class="line">&gt;&gt;&gt; pipenv --python 3.7  # 也可以指定Python版本来创建虚拟环境</span><br><span class="line"></span><br><span class="line">4、激活当前虚拟环境</span><br><span class="line">&gt;&gt;&gt; pipenv shell</span><br><span class="line"></span><br><span class="line">5、在虚拟环境下给项目安装需要的模块，并将其写入到pipfile</span><br><span class="line">&gt;&gt;&gt; pipenv install django=1.11.11</span><br><span class="line"></span><br><span class="line">6、退出虚拟环境</span><br><span class="line">&gt;&gt;&gt; exit</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>pipenv其他常用操作</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">1、查看项目位置</span><br><span class="line">&gt;&gt;&gt; pipenv --where</span><br><span class="line"></span><br><span class="line">2、查看虚拟环境位置</span><br><span class="line">&gt;&gt;&gt; pipenv --venv</span><br><span class="line"></span><br><span class="line">3、查看解释器信息</span><br><span class="line">&gt;&gt;&gt; pipenv --py</span><br><span class="line"></span><br><span class="line">4、查看包的依赖结构</span><br><span class="line">&gt;&gt;&gt; pipenv graph</span><br><span class="line"></span><br><span class="line">5、卸载模块</span><br><span class="line">&gt;&gt;&gt; pipenv uninstall django</span><br><span class="line"></span><br><span class="line">6、卸载全部包并从Pipfile中移除</span><br><span class="line">&gt;&gt;&gt; pipenv uninstall --all</span><br><span class="line"></span><br><span class="line">7、检查安全漏洞</span><br><span class="line">&gt;&gt;&gt; pipenv check</span><br></pre></td></tr></table></figure>
+
+<h3 id="Windows下Python环境搭建"><a href="#Windows下Python环境搭建" class="headerlink" title="Windows下Python环境搭建"></a>Windows下Python环境搭建</h3><p>与大多数UNIX系统和服务不同，Windows系统没有预安装Python。为了使Python可用，很多年来CPython 团队已经编译了每一个 <a href="https://www.python.org/download/releases/" target="_blank" rel="noopener">release</a> 的Windows安装程序（MSI 包）。这些安装程序主要用于每个用户单独安装Python时，添加核心解释器和库。安装程序还可以为一台机器的所有用户安装，并且可以为应用程序本地分发提供单独的zip文件。</p>
+<h4 id="安装包种类"><a href="#安装包种类" class="headerlink" title="安装包种类"></a>安装包种类</h4><blockquote>
+<p><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">https://www.python.org/downloads/</a></p>
+</blockquote>
+<ul>
+<li>32位/64位Python2.x安装包</li>
+<li>32位/64位Python3.x安装包</li>
+<li>web installer（网络安装包）是一个小的初始化工具，它将在安装过程中，根据需要自动下载所需的组件。</li>
+<li>offline installer（离线安装包）内含默认安装所需的组件，可选择功能仍需要Internet连接下载</li>
+</ul>
+<h4 id="官网下载python安装包"><a href="#官网下载python安装包" class="headerlink" title="官网下载python安装包"></a>官网下载python安装包</h4><blockquote>
+<p>此处以安装64位python3.x为例</p>
+</blockquote>
+<p><img src="/images/post_imgs/win_installer.png" alt></p>
+<p>如果选择<code>立即安装</code>：</p>
+<ul>
+<li>不需要管理员权限</li>
+<li>Python将安装到用户目录中</li>
+<li>将根据第一页底部的选项安装</li>
+<li>将安装标准库，测试套件，启动器和pip</li>
+<li>如果选择将安装目录将添加到 <code>PATH</code></li>
+<li>快捷方式仅对当前用户可见</li>
+</ul>
+<p>如果选择<code>自定义安装</code>：</p>
+<ul>
+<li>要安装的功能</li>
+<li>安装位置</li>
+<li>其他选项或安装后的操作。</li>
+<li>如果要安装调试符号或二进制文件，需要使用此选项。</li>
+</ul>
+<h4 id="☆无UI安装"><a href="#☆无UI安装" class="headerlink" title="☆无UI安装"></a>☆无UI安装</h4><ul>
+<li>要完全隐藏安装程序UI并静默安装Python，可以使用 <code>/quiet</code> 选项。</li>
+<li>要跳过用户交互但仍然显示进度和错误，可以使用 <code>/passive</code> 选项。</li>
+<li>可以通过 <code>/uninstall</code> 选项立即开始删除Python，即不会显示任何提示。</li>
+<li>例如，要以静默方式全局安装默认的Python，使用以下命令:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python<span class="number">-3.7</span><span class="number">.4</span>.exe /quiet InstallAllUsers=<span class="number">1</span> PrependPath=<span class="number">1</span> Include_test=<span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="验证安装"><a href="#验证安装" class="headerlink" title="验证安装"></a>验证安装</h4><ul>
+<li>在命令行输入<code>python --version</code>以验证是否安装成功</li>
+</ul>
+<p><img src="/images/post_imgs/version.png" alt></p>
+<h3 id="Linux-CentOS7-x-下Python环境搭建"><a href="#Linux-CentOS7-x-下Python环境搭建" class="headerlink" title="Linux(CentOS7.x)下Python环境搭建"></a>Linux(CentOS7.x)下Python环境搭建</h3><p>由于CentOS等大多数Linux发行版中默认安装了python2.7版本，但是对于python开发者而言python3.x的许多特性才是未来，所以本文介绍如何在CentOS7.x操作系统下安装python3.x。</p>
+<h4 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h4><ul>
+<li><p>在CentOS系统中安装python需要 GCC 编译器和 make 编译工具，其包含在 Development tools 软件组中，所以需要安装Development tools 软件组。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum groupinstall "Development tools"</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Python3.x 源文件使用 zlib 格式打包，所以需要安装 zlib 软件包,同时python在编译安装时需要使用 zlib 的头文件和链接库，所以需要安装 zlib 的头文件和链接库 zlib-devel 软件包。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install zlib zlib-devel</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Python3.x 有个内置模块 ctypes，它是 Python3.x 的外部函数库，需要使用系统外部函数库（libffi）的头文件和链接库，所以需要安装外部函数库（libffi）头文件和链接库 libffi-devel 软件包。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install libffi-devel</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同时还需要一些其他python安装需要的模块，在此不一一做解释</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum -y install bzip2-devel openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="下载安装包解压"><a href="#下载安装包解压" class="headerlink" title="下载安装包解压"></a>下载安装包解压</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd 安装包下载目录</span><br><span class="line">wget https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tar.xz</span><br><span class="line">tar -xvJf  Python-3.7.4.tar.xz</span><br></pre></td></tr></table></figure>
+
+<h4 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/python3  # 创建编译安装目录</span><br><span class="line">cd Python-3.7.4</span><br><span class="line">./configure --prefix=/usr/local/python3</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+
+<h4 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3</span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3a</span><br></pre></td></tr></table></figure>
+
+<h4 id="验证安装-1"><a href="#验证安装-1" class="headerlink" title="验证安装"></a>验证安装</h4><ul>
+<li>在命令行输入<code>python --version</code>以验证是否安装成功</li>
+</ul>
+<h3 id="MacOS下Python环境搭建"><a href="#MacOS下Python环境搭建" class="headerlink" title="MacOS下Python环境搭建"></a>MacOS下Python环境搭建</h3><p>MacOS附带Apple预安装的Python2.7。同样，对于python开发者而言，肯定是需要python3.x环境的，那么如果选择从python官网安装较新的 Python 版本，那么Mac上将安装两个不同版本的Python ，因此在使用过程中python解释器的路径与想要执行的python版本一致非常重要。</p>
+<h4 id="官网下载python安装包-1"><a href="#官网下载python安装包-1" class="headerlink" title="官网下载python安装包"></a>官网下载python安装包</h4><blockquote>
+<p><a href="https://www.python.org/downloads/release/python-374/" target="_blank" rel="noopener">https://www.python.org/downloads/release/python-374/</a></p>
+</blockquote>
+<p><img src="/images/post_imgs/mac-python.jpg" alt></p>
+<h4 id="验证安装-2"><a href="#验证安装-2" class="headerlink" title="验证安装"></a>验证安装</h4><ul>
+<li>在命令行输入<code>python --version</code>以验证是否安装成功</li>
+</ul>
+<h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><ul>
+<li><p>打开.bash_profile</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加别名，使python命令指向python3.x解释器</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alias python=/usr/local/bin/python3.7</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生效文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source .bash_profile</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://elijahyg.github.io/2019/09/25/python IDE介绍&环境搭建/" title="python IDE介绍 &amp; 环境搭建" target="_blank" rel="external">https://elijahyg.github.io/2019/09/25/python IDE介绍&环境搭建/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 国际许可协议</a>进行许可。
+    </li>
+  </ul>
+</blockquote>
+
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2019/09/22/Go语言起源/" title="Go语言起源"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'e9a82c38e4a1a8590a33',
+    clientSecret: 'bf3deb8d2b72a593c950e26693e5c56bf98a7bac',
+    repo: 'ElijahYG.github.io',
+    owner: 'ElijahYG',
+    admin: ['ElijahYG'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
