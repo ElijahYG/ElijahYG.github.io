@@ -31,7 +31,7 @@
 <meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/win_installer.png">
 <meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/version.png">
 <meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/mac-python.jpg">
-<meta property="og:updated_time" content="2019-09-28T15:36:06.883Z">
+<meta property="og:updated_time" content="2019-09-28T15:51:37.545Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python IDE介绍 &amp; 环境搭建">
 <meta name="twitter:description" content="Python2.x VS Python3.x为什么会有Python3.x相信但凡接触过python语言的朋友在接触之初会有“到底用python2还是python3？”的纠结。其实我也有这方面的疑问，为什么python的核心团队不能统一一下呢？非要搞个2.x和3.x，而且3.x还不能向下兼容，这中操作让曾经已经用python2.x编写完成的项目情何以堪，还要费神费力去升级成python3.x，到底是">
@@ -217,7 +217,7 @@
   <div class="widget">
     <h3 class="widget-title">Categories</h3>
     <div class="widget-body">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go系列/">Go系列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python系列/">Python系列</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><span class="category-list-count">2</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go系列/">Go系列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python系列/">Python系列</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
@@ -232,7 +232,7 @@
   <div class="widget">
     <h3 class="widget-title">Archive</h3>
     <div class="widget-body">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">6</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">5</span></li></ul>
     </div>
   </div>
 
@@ -297,31 +297,6 @@
           <li>
             
             <div class="item-thumb">
-              <a href="/2019/09/17/hello-world/" class="thumb">
-    
-    
-        <span class="thumb-image thumb-none"></span>
-    
-</a>
-
-            </div>
-            
-            <div class="item-inner">
-              <p class="item-category">
-                <a class="category-link" href="/categories/其他/">其他</a>
-              </p>
-              <p class="item-title">
-                <a href="/2019/09/17/hello-world/" class="title">Hello World</a>
-              </p>
-              <p class="item-date">
-                <time datetime="2019-09-16T16:57:03.181Z" itemprop="datePublished">2019-09-17</time>
-              </p>
-            </div>
-          </li>
-          
-          <li>
-            
-            <div class="item-thumb">
               <a href="/2019/09/16/python语言起源/" class="thumb">
     
     
@@ -365,6 +340,31 @@
               </p>
               <p class="item-date">
                 <time datetime="2019-09-16T15:21:04.000Z" itemprop="datePublished">2019-09-16</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/09/13/基于Github搭建Hexo个人博客/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/其他/">其他</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/09/13/基于Github搭建Hexo个人博客/" class="title">基于Github搭建Hexo个人博客</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-09-13T15:46:44.000Z" itemprop="datePublished">2019-09-13</time>
               </p>
             </div>
           </li>
@@ -558,7 +558,7 @@
 
 <h4 id="编译安装"><a href="#编译安装" class="headerlink" title="编译安装"></a>编译安装</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mkdir /usr/local/python3  # 创建编译安装目录</span><br><span class="line">cd Python-3.7.4</span><br><span class="line">./configure --prefix=/usr/local/python3</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure>
 
-<h4 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3</span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3a</span><br></pre></td></tr></table></figure>
+<h4 id="创建软链接"><a href="#创建软链接" class="headerlink" title="创建软链接"></a>创建软链接</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -s /usr/local/python3/bin/python3 /usr/local/bin/python3</span><br><span class="line">ln -s /usr/local/python3/bin/pip3 /usr/local/bin/pip3</span><br></pre></td></tr></table></figure>
 
 <h4 id="验证安装-1"><a href="#验证安装-1" class="headerlink" title="验证安装"></a>验证安装</h4><ul>
 <li>在命令行输入<code>python --version</code>以验证是否安装成功</li>
@@ -572,7 +572,7 @@
 <li>在命令行输入<code>python --version</code>以验证是否安装成功</li>
 </ul>
 <h4 id="配置环境变量"><a href="#配置环境变量" class="headerlink" title="配置环境变量"></a>配置环境变量</h4><ul>
-<li><p>打开.bash_profile</p>
+<li><p>打开<code>.bash_profile</code></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi ~/.bash_profile</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>添加别名，使python命令指向python3.x解释器</p>
