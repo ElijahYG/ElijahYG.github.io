@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://elijahyg.github.io/"/>
-  <updated>2019-09-28T15:51:37.545Z</updated>
+  <updated>2019-10-11T09:21:44.031Z</updated>
   <id>https://elijahyg.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python数据类型之数字</title>
+    <link href="https://elijahyg.github.io/2019/10/11/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%95%B0%E5%AD%97/"/>
+    <id>https://elijahyg.github.io/2019/10/11/Python数据类型之数字/</id>
+    <published>2019-10-11T09:19:25.000Z</published>
+    <updated>2019-10-11T09:21:44.031Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数字类型-integer"><a href="#数字类型-integer" class="headerlink" title="数字类型(integer)"></a>数字类型(integer)</h2><h3 id="整型-int"><a href="#整型-int" class="headerlink" title="整型(int)"></a>整型(int)</h3><p>在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647<br>在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807</p><h3 id="长整型-long"><a href="#长整型-long" class="headerlink" title="长整型(long)"></a>长整型(long)</h3><p>和C语言不同，Python的长整数没有指定位宽，即：Python没有限制长整数数值的大小，但实际上由于机器内存有限，我们使用的长整数数值不可能无限大。<br>自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以如今在长整数数据后面不加字母L也不会导致严重后果了。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在python2.x 中（python3.x中没有长整型的概念）：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num=<span class="number">2L</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(num)</span><br><span class="line">    &lt;type <span class="string">'long'</span>&gt;</span><br></pre></td></tr></table></figure><h3 id="浮点型-float"><a href="#浮点型-float" class="headerlink" title="浮点型(float)"></a>浮点型(float)</h3><p>浮点数用来处理实数，也就是带有小数的数字。类似于C语言中的double类型，占8个字节（64位），其中52位表示底，11位表示指数，剩下的一位表示符号。</p><h3 id="复数-complex"><a href="#复数-complex" class="headerlink" title="复数(complex)"></a>复数(complex)</h3><p>复数由实数部分和虚数部分组成，一般形式为x＋yj，其中的x是复数的实数部分，y是复数的虚数部分，这里的x和y都是实数。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x=<span class="number">1</span><span class="number">-2j</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.real</span><br><span class="line"><span class="number">1.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.imag</span><br><span class="line"><span class="number">-2.0</span></span><br></pre></td></tr></table></figure><h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin(var) # 把变量转换为2进制</span><br><span class="line">oct(var) # 把变量转换为8进制</span><br><span class="line">int(var) # 把变量转换为10进制</span><br><span class="line">hex(var) # 把变量转换为16进制</span><br></pre></td></tr></table></figure><h3 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h3><ul><li>Python中存在小数字池：<code>-5 ～ 256，即[-5,257]</code></li></ul><p>Python对小整数的定义是[-5,257]这些整数对象是提前建立好的，不会被垃圾回收。在一个Python的程序中，所有位于这个范围内的整数使用的都是同一个对象。<br>同理，单个字母也是这样的。</p><p>在一般情况下当变量被赋值后，内存和变量的关系如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一</span></span><br><span class="line">n1 = <span class="number">123</span></span><br><span class="line">n2 = <span class="number">123</span></span><br></pre></td></tr></table></figure><p><img src="/images/post_imgs/integer_1.png" alt></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式二</span></span><br><span class="line">n1 = <span class="number">123</span></span><br><span class="line">n2 = n1</span><br></pre></td></tr></table></figure><p><img src="/images/post_imgs/integer_2.png" alt></p><p>由于python内的优化机制，不论是2.x还是3.x都存在，在-5~257之间的数，如果使用第一种赋值方式，那么他们依然属于同一块内存</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(id(n1)) <span class="comment"># 查看变量的内存地址</span></span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;数字类型-integer&quot;&gt;&lt;a href=&quot;#数字类型-integer&quot; class=&quot;headerlink&quot; title=&quot;数字类型(integer)&quot;&gt;&lt;/a&gt;数字类型(integer)&lt;/h2&gt;&lt;h3 id=&quot;整型-int&quot;&gt;&lt;a href=&quot;#整型-in
+      
+    
+    </summary>
+    
+    
+      <category term="Python系列" scheme="https://elijahyg.github.io/categories/Python%E7%B3%BB%E5%88%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>python IDE介绍 &amp; 环境搭建</title>
@@ -93,9 +117,9 @@
     <link href="https://elijahyg.github.io/2019/09/16/Python%E7%B3%BB%E5%88%97/"/>
     <id>https://elijahyg.github.io/2019/09/16/Python系列/</id>
     <published>2019-09-16T15:21:04.000Z</published>
-    <updated>2019-09-28T16:05:50.517Z</updated>
+    <updated>2019-10-11T09:23:59.572Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Python-基础篇"><a href="#Python-基础篇" class="headerlink" title="Python_基础篇"></a>Python_基础篇</h3><blockquote><p>文章若无特别指出均表示python3.x版本下</p></blockquote><ul><li><p>前提准备</p><ul><li>01-<a href="http://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/">语言起源</a></li><li>02-<a href="http://elijahyg.github.io/2019/09/25/python%20IDE%E4%BB%8B%E7%BB%8D&%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">IDE介绍 &amp; 环境搭建</a></li></ul></li><li><p>语法基础</p><ul><li>01-数据类型</li><li>02-运算符</li><li>03-字符编码</li></ul></li><li><p>函数</p></li><li><p>模块 &amp; 包</p></li><li><p>面向对象</p></li><li><p>异常处理</p></li><li><p>文件操作</p></li><li><p>网络编程</p></li><li><p>并发编程</p></li><li><p>原理探究</p></li></ul>]]></content>
+    <content type="html"><![CDATA[<h3 id="Python-基础篇"><a href="#Python-基础篇" class="headerlink" title="Python_基础篇"></a>Python_基础篇</h3><blockquote><p>文章若无特别指出均表示python3.x版本下</p></blockquote><ul><li><p>前提准备</p><ul><li>01-<a href="http://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/">语言起源</a></li><li>02-<a href="http://elijahyg.github.io/2019/09/25/python%20IDE%E4%BB%8B%E7%BB%8D&%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">IDE介绍 &amp; 环境搭建</a></li></ul></li><li><p>语法基础</p><ul><li>01-数据类型</li><li>01-<a href="http://elijahyg.github.io/2019/09/16/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%95%B0%E5%AD%97/">数字</a></li><li>02-运算符</li><li>03-字符编码</li></ul></li><li><p>函数</p></li><li><p>模块 &amp; 包</p></li><li><p>面向对象</p></li><li><p>异常处理</p></li><li><p>文件操作</p></li><li><p>网络编程</p></li><li><p>并发编程</p></li><li><p>原理探究</p></li></ul>]]></content>
     
     <summary type="html">
     

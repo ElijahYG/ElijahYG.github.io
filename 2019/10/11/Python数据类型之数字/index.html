@@ -17,22 +17,23 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>python语言起源 | Yang&#39;s Blog</title>
-  <meta name="description" content="Python语言的前世今生Python的诞生python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范·罗苏姆（中文名字：龟叔）为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。   （龟叔：2005年加入谷歌至2012年，2013年加入Dropbox直到现在，依然掌握着Python发展的核心方向，被称为仁慈的独裁者）">
+  <title>Python数据类型之数字 | Yang&#39;s Blog</title>
+  <meta name="description" content="数字类型(integer)整型(int)在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 长整型(long)和C语言不同，Python的长整数没有指定位宽，即：Pyth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python语言起源">
-<meta property="og:url" content="https://elijahyg.github.io/2019/09/16/python语言起源/index.html">
+<meta property="og:title" content="Python数据类型之数字">
+<meta property="og:url" content="https://elijahyg.github.io/2019/10/11/Python数据类型之数字/index.html">
 <meta property="og:site_name" content="Yang&#39;s Blog">
-<meta property="og:description" content="Python语言的前世今生Python的诞生python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范·罗苏姆（中文名字：龟叔）为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。   （龟叔：2005年加入谷歌至2012年，2013年加入Dropbox直到现在，依然掌握着Python发展的核心方向，被称为仁慈的独裁者）">
+<meta property="og:description" content="数字类型(integer)整型(int)在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 长整型(long)和C语言不同，Python的长整数没有指定位宽，即：Pyth">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/Guido_van_Rossum.jpg">
-<meta property="og:updated_time" content="2019-09-24T11:44:07.091Z">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/integer_1.png">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/integer_2.png">
+<meta property="og:updated_time" content="2019-10-11T09:21:44.031Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python语言起源">
-<meta name="twitter:description" content="Python语言的前世今生Python的诞生python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范·罗苏姆（中文名字：龟叔）为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。   （龟叔：2005年加入谷歌至2012年，2013年加入Dropbox直到现在，依然掌握着Python发展的核心方向，被称为仁慈的独裁者）">
-<meta name="twitter:image" content="https://elijahyg.github.io/images/post_imgs/Guido_van_Rossum.jpg">
+<meta name="twitter:title" content="Python数据类型之数字">
+<meta name="twitter:description" content="数字类型(integer)整型(int)在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 长整型(long)和C语言不同，Python的长整数没有指定位宽，即：Pyth">
+<meta name="twitter:image" content="https://elijahyg.github.io/images/post_imgs/integer_1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://elijahyg.github.io/2019/09/16/python语言起源/index.html">
+  <link rel="canonical" href="https://elijahyg.github.io/2019/10/11/Python数据类型之数字/index.html">
   
   
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
@@ -379,21 +380,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Python语言的前世今生"><span class="toc-number">1.</span> <span class="toc-text">Python语言的前世今生</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Python的诞生"><span class="toc-number">1.1.</span> <span class="toc-text">Python的诞生</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python版本发展"><span class="toc-number">1.2.</span> <span class="toc-text">Python版本发展</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python的各类解释器"><span class="toc-number">1.3.</span> <span class="toc-text">Python的各类解释器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Python应用领域"><span class="toc-number">1.4.</span> <span class="toc-text">Python应用领域</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数字类型-integer"><span class="toc-number">1.</span> <span class="toc-text">数字类型(integer)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#整型-int"><span class="toc-number">1.1.</span> <span class="toc-text">整型(int)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#长整型-long"><span class="toc-number">1.2.</span> <span class="toc-text">长整型(long)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浮点型-float"><span class="toc-number">1.3.</span> <span class="toc-text">浮点型(float)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复数-complex"><span class="toc-number">1.4.</span> <span class="toc-text">复数(complex)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进制转换"><span class="toc-number">1.5.</span> <span class="toc-text">进制转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小知识点"><span class="toc-number">1.6.</span> <span class="toc-text">小知识点</span></a></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-python语言起源" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Python数据类型之数字" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      python语言起源
+      Python数据类型之数字
     </h1>
   
 
@@ -401,8 +402,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/09/16/python语言起源/" class="article-date">
-	  <time datetime="2019-09-16T15:31:15.000Z" itemprop="datePublished">2019-09-16</time>
+	<a href="/2019/10/11/Python数据类型之数字/" class="article-date">
+	  <time datetime="2019-10-11T09:19:25.000Z" itemprop="datePublished">2019-10-11</time>
 	</a>
 </span>
         
@@ -422,62 +423,43 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/16/python语言起源/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/11/Python数据类型之数字/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 867(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 579(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 3(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 2(minutes)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="Python语言的前世今生"><a href="#Python语言的前世今生" class="headerlink" title="Python语言的前世今生"></a>Python语言的前世今生</h2><h3 id="Python的诞生"><a href="#Python的诞生" class="headerlink" title="Python的诞生"></a>Python的诞生</h3><p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范·罗苏姆（中文名字：龟叔）为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。  </p>
-<p>（龟叔：2005年加入谷歌至2012年，2013年加入Dropbox直到现在，依然掌握着Python发展的核心方向，被称为仁慈的独裁者）。<br><img src="/images/post_imgs/Guido_van_Rossum.jpg" alt></p>
-<hr>
-<h3 id="Python版本发展"><a href="#Python版本发展" class="headerlink" title="Python版本发展"></a>Python版本发展</h3><ul>
-<li>1989年，为了打发圣诞节假期，Guido开始写Python语言的编译器。Python这个名字，来自Guido所挚爱的电视剧Monty Python’s Flying Circus。他希望这个新的叫做Python的语言，能符合他的理想：创造一种C和shell之间，功能全面，易学易用，可拓展的语言。</li>
-<li>1991年，第一个Python编译器诞生。它是用C语言实现的，并能够调用C语言的库文件。从一出生，Python已经具有了：类，函数，异常处理，包含表和词典在内的核心数据类型，以及模块为基础的拓展系统。</li>
-<li>Granddaddy of Python web frameworks, Zope 1 was released in 1999</li>
-<li>Python 1.0 - January 1994 增加了 lambda, map, filter and reduce.</li>
-<li>Python 2.0 - October 16, 2000，加入了内存回收机制，构成了现在Python语言框架的基础</li>
-<li>Python 2.4 - November 30, 2004, 同年目前最流行的WEB框架Django 诞生</li>
-<li>Python 2.5 - September 19, 2006</li>
-<li>Python 2.6 - October 1, 2008</li>
-<li>Python 2.7 - July 3, 2010</li>
-<li><strong>In November 2014, it was announced that Python 2.7 would be supported until 2020, and reaffirmed that there would be no 2.8 release as users were expected to move to Python 3.4+ as soon as possible</strong></li>
-<li>Python 3.0 - December 3, 2008</li>
-<li>Python 3.1 - June 27, 2009</li>
-<li>Python 3.2 - February 20, 2011</li>
-<li>Python 3.3 - September 29, 2012</li>
-<li>Python 3.4 - March 16, 2014</li>
-<li>Python 3.5 - September 13, 2015</li>
-<li>Python 3.6 - December 23, 2016</li>
-<li>Python 3.7 - June 27, 2018</li>
+        <h2 id="数字类型-integer"><a href="#数字类型-integer" class="headerlink" title="数字类型(integer)"></a>数字类型(integer)</h2><h3 id="整型-int"><a href="#整型-int" class="headerlink" title="整型(int)"></a>整型(int)</h3><p>在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647<br>在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807</p>
+<h3 id="长整型-long"><a href="#长整型-long" class="headerlink" title="长整型(long)"></a>长整型(long)</h3><p>和C语言不同，Python的长整数没有指定位宽，即：Python没有限制长整数数值的大小，但实际上由于机器内存有限，我们使用的长整数数值不可能无限大。<br>自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以如今在长整数数据后面不加字母L也不会导致严重后果了。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在python2.x 中（python3.x中没有长整型的概念）：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num=<span class="number">2L</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(num)</span><br><span class="line">    &lt;type <span class="string">'long'</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="浮点型-float"><a href="#浮点型-float" class="headerlink" title="浮点型(float)"></a>浮点型(float)</h3><p>浮点数用来处理实数，也就是带有小数的数字。类似于C语言中的double类型，占8个字节（64位），其中52位表示底，11位表示指数，剩下的一位表示符号。</p>
+<h3 id="复数-complex"><a href="#复数-complex" class="headerlink" title="复数(complex)"></a>复数(complex)</h3><p>复数由实数部分和虚数部分组成，一般形式为x＋yj，其中的x是复数的实数部分，y是复数的虚数部分，这里的x和y都是实数。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x=<span class="number">1</span><span class="number">-2j</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.real</span><br><span class="line"><span class="number">1.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.imag</span><br><span class="line"><span class="number">-2.0</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin(var) # 把变量转换为2进制</span><br><span class="line">oct(var) # 把变量转换为8进制</span><br><span class="line">int(var) # 把变量转换为10进制</span><br><span class="line">hex(var) # 把变量转换为16进制</span><br></pre></td></tr></table></figure>
+
+<h3 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h3><ul>
+<li>Python中存在小数字池：<code>-5 ～ 256，即[-5,257]</code></li>
 </ul>
-<hr>
-<h3 id="Python的各类解释器"><a href="#Python的各类解释器" class="headerlink" title="Python的各类解释器"></a>Python的各类解释器</h3><ul>
-<li>CPython：官方的解释器，也是使用最广的Python解释器。在CPython解释器下有GIL限制，一个CPU同一时刻只能运行一个线程。</li>
-<li>IPython：是一种比较流行的解释器</li>
-<li>PyPy：一种专注于执行速度的解释器。PyPy采用JIT技术，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。</li>
-<li>Jython：运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行，Jython可以直接调用Java的各种函数库。</li>
-<li>IronPython：和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。</li>
-<li>ZhPy：周蟒，支持使用繁/简中文语句编写程序的Python语言</li>
-</ul>
-<hr>
-<h3 id="Python应用领域"><a href="#Python应用领域" class="headerlink" title="Python应用领域"></a>Python应用领域</h3><p>目前Python主要应用领域：</p>
-<ul>
-<li>云计算: 云计算最火的语言， 典型应用OpenStack</li>
-<li>WEB开发: 众多优秀的WEB框架，众多大型网站均为Python开发，Youtube, Dropbox, 豆瓣等等，典型WEB框架有Django、Flask、Tornado、sanic</li>
-<li>科学运算、人工智能: 典型库NumPy, SciPy, Matplotlib, Enthought librarys,pandas</li>
-<li>系统运维: 运维人员必备语言</li>
-<li>金融：量化交易，金融分析，在金融工程领域，Python不但在用，且用的最多，而且重要性逐年提高。</li>
-<li>原因：作为动态语言的Python，语言结构清晰简单，库丰富，成熟稳定，科学计算和统计分析都很牛逼，生产效率远远高于c、c++、java,尤其擅长策略回测</li>
-<li>图形GUI: PyQT、WxPython、TkInter</li>
-</ul>
+<p>Python对小整数的定义是[-5,257]这些整数对象是提前建立好的，不会被垃圾回收。在一个Python的程序中，所有位于这个范围内的整数使用的都是同一个对象。<br>同理，单个字母也是这样的。</p>
+<p>在一般情况下当变量被赋值后，内存和变量的关系如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一</span></span><br><span class="line">n1 = <span class="number">123</span></span><br><span class="line">n2 = <span class="number">123</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/post_imgs/integer_1.png" alt></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式二</span></span><br><span class="line">n1 = <span class="number">123</span></span><br><span class="line">n2 = n1</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/post_imgs/integer_2.png" alt></p>
+<p>由于python内的优化机制，不论是2.x还是3.x都存在，在-5~257之间的数，如果使用第一种赋值方式，那么他们依然属于同一块内存</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(id(n1)) <span class="comment"># 查看变量的内存地址</span></span><br></pre></td></tr></table></figure>
+
 
       
     </div>
@@ -487,7 +469,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://elijahyg.github.io/2019/09/16/python语言起源/" title="python语言起源" target="_blank" rel="external">https://elijahyg.github.io/2019/09/16/python语言起源/</a>
+      <a href="https://elijahyg.github.io/2019/10/11/Python数据类型之数字/" title="Python数据类型之数字" target="_blank" rel="external">https://elijahyg.github.io/2019/10/11/Python数据类型之数字/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -517,13 +499,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/09/22/Go语言起源/" title="Go语言起源"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/09/16/Python系列/" title="Python系列汇总"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2019/09/25/python IDE介绍&环境搭建/" title="python IDE介绍 &amp; 环境搭建"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
