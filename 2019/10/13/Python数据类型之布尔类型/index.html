@@ -17,20 +17,20 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>基于Github搭建Hexo个人博客 | Yang&#39;s Blog</title>
-  <meta name="description" content="一、准备工作 Github账号 nodejs npm git for windows  二、创建github仓库 创建以你的用户名.github.io的仓库  三、域名绑定(可选)四、配置SSH key 为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。   用git bash执行如下">
+  <title>Python数据类型之布尔类型 | Yang&#39;s Blog</title>
+  <meta name="description" content="布尔类型(boolean)布尔值只有True和False，同时True对应二进制中1，False对应二进制中0 布尔运算 布尔运算在计算机中用来做条件判断，根据计算结果为True或者False，计算机可以自动执行不同的后续代码。  与运算 只有两个布尔值都为 True 时，计算结果才为 True。     值 运算符 值 结果    True and True True   True and Fa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Github搭建Hexo个人博客">
-<meta property="og:url" content="https://elijahyg.github.io/2019/09/13/基于Github搭建Hexo个人博客/index.html">
+<meta property="og:title" content="Python数据类型之布尔类型">
+<meta property="og:url" content="https://elijahyg.github.io/2019/10/13/Python数据类型之布尔类型/index.html">
 <meta property="og:site_name" content="Yang&#39;s Blog">
-<meta property="og:description" content="一、准备工作 Github账号 nodejs npm git for windows  二、创建github仓库 创建以你的用户名.github.io的仓库  三、域名绑定(可选)四、配置SSH key 为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。   用git bash执行如下">
+<meta property="og:description" content="布尔类型(boolean)布尔值只有True和False，同时True对应二进制中1，False对应二进制中0 布尔运算 布尔运算在计算机中用来做条件判断，根据计算结果为True或者False，计算机可以自动执行不同的后续代码。  与运算 只有两个布尔值都为 True 时，计算结果才为 True。     值 运算符 值 结果    True and True True   True and Fa">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-15T15:53:10.139Z">
+<meta property="og:updated_time" content="2019-10-13T11:26:33.749Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于Github搭建Hexo个人博客">
-<meta name="twitter:description" content="一、准备工作 Github账号 nodejs npm git for windows  二、创建github仓库 创建以你的用户名.github.io的仓库  三、域名绑定(可选)四、配置SSH key 为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。   用git bash执行如下">
+<meta name="twitter:title" content="Python数据类型之布尔类型">
+<meta name="twitter:description" content="布尔类型(boolean)布尔值只有True和False，同时True对应二进制中1，False对应二进制中0 布尔运算 布尔运算在计算机中用来做条件判断，根据计算结果为True或者False，计算机可以自动执行不同的后续代码。  与运算 只有两个布尔值都为 True 时，计算结果才为 True。     值 运算符 值 结果    True and True True   True and Fa">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://elijahyg.github.io/2019/09/13/基于Github搭建Hexo个人博客/index.html">
+  <link rel="canonical" href="https://elijahyg.github.io/2019/10/13/Python数据类型之布尔类型/index.html">
   
   
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
@@ -377,21 +377,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">Catalogue</h3>
-      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、准备工作"><span class="toc-number">1.</span> <span class="toc-text">一、准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、创建github仓库"><span class="toc-number">2.</span> <span class="toc-text">二、创建github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、域名绑定-可选"><span class="toc-number">3.</span> <span class="toc-text">三、域名绑定(可选)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、配置SSH-key"><span class="toc-number">4.</span> <span class="toc-text">四、配置SSH key</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、Hexo部分"><span class="toc-number">5.</span> <span class="toc-text">五、Hexo部分</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、修改Hexo主题"><span class="toc-number">6.</span> <span class="toc-text">六、修改Hexo主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#七、上传到github"><span class="toc-number">7.</span> <span class="toc-text">七、上传到github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#八、常用hexo命令"><span class="toc-number">8.</span> <span class="toc-text">八、常用hexo命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#九、写博客"><span class="toc-number">9.</span> <span class="toc-text">九、写博客</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#布尔类型-boolean"><span class="toc-number">1.</span> <span class="toc-text">布尔类型(boolean)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#布尔运算"><span class="toc-number">1.1.</span> <span class="toc-text">布尔运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#与运算"><span class="toc-number">1.1.1.</span> <span class="toc-text">与运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#或运算"><span class="toc-number">1.1.2.</span> <span class="toc-text">或运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#非运算"><span class="toc-number">1.1.3.</span> <span class="toc-text">非运算</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#短路计算"><span class="toc-number">1.1.4.</span> <span class="toc-text">短路计算</span></a></li></ol></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-基于Github搭建Hexo个人博客" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Python数据类型之布尔类型" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      基于Github搭建Hexo个人博客
+      Python数据类型之布尔类型
     </h1>
   
 
@@ -399,14 +399,14 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/09/13/基于Github搭建Hexo个人博客/" class="article-date">
-	  <time datetime="2019-09-13T15:46:44.000Z" itemprop="datePublished">2019-09-13</time>
+	<a href="/2019/10/13/Python数据类型之布尔类型/" class="article-date">
+	  <time datetime="2019-10-13T11:23:05.000Z" itemprop="datePublished">2019-10-13</time>
 	</a>
 </span>
         
   <span class="article-category">
     <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/其他/">其他</a>
+    <a class="article-category-link" href="/categories/Python系列/">Python系列</a>
   </span>
 
         
@@ -420,116 +420,132 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/09/13/基于Github搭建Hexo个人博客/#comments" class="article-comment-link">Comments</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/13/Python数据类型之布尔类型/#comments" class="article-comment-link">Comments</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1k(words)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 481(words)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 4(minutes)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 1(minutes)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h3 id="一、准备工作"><a href="#一、准备工作" class="headerlink" title="一、准备工作"></a>一、准备工作</h3><ul>
-<li>Github账号</li>
-<li>nodejs</li>
-<li>npm</li>
-<li>git for windows</li>
-</ul>
-<h3 id="二、创建github仓库"><a href="#二、创建github仓库" class="headerlink" title="二、创建github仓库"></a>二、创建github仓库</h3><ul>
-<li>创建以<code>你的用户名.github.io</code>的仓库</li>
-</ul>
-<h3 id="三、域名绑定-可选"><a href="#三、域名绑定-可选" class="headerlink" title="三、域名绑定(可选)"></a>三、域名绑定(可选)</h3><h3 id="四、配置SSH-key"><a href="#四、配置SSH-key" class="headerlink" title="四、配置SSH key"></a>四、配置SSH key</h3><blockquote>
-<p>为什么要配置这个呢？因为你提交代码肯定要拥有你的github权限才可以，但是直接使用用户名和密码太不安全了，所以我们使用ssh key来解决本地和服务器的连接问题。</p>
+        <h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型(boolean)"></a>布尔类型(boolean)</h2><p>布尔值只有True和False，同时True对应二进制中1，False对应二进制中0</p>
+<h3 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h3><blockquote>
+<p>布尔运算在计算机中用来做条件判断，根据计算结果为True或者False，计算机可以自动执行不同的后续代码。</p>
 </blockquote>
+<h4 id="与运算"><a href="#与运算" class="headerlink" title="与运算"></a>与运算</h4><blockquote>
+<p>只有两个布尔值都为 True 时，计算结果才为 True。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">运算符</th>
+<th align="center">值</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">True</td>
+<td align="center">and</td>
+<td align="center">True</td>
+<td align="center">True</td>
+</tr>
+<tr>
+<td align="center">True</td>
+<td align="center">and</td>
+<td align="center">False</td>
+<td align="center">False</td>
+</tr>
+<tr>
+<td align="center">False</td>
+<td align="center">and</td>
+<td align="center">True</td>
+<td align="center">False</td>
+</tr>
+<tr>
+<td align="center">False</td>
+<td align="center">and</td>
+<td align="center">False</td>
+<td align="center">False</td>
+</tr>
+</tbody></table>
+<h4 id="或运算"><a href="#或运算" class="headerlink" title="或运算"></a>或运算</h4><blockquote>
+<p>只要有一个布尔值为 True，计算结果就是 True。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">值</th>
+<th align="center">运算符</th>
+<th align="center">值</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">True</td>
+<td align="center">or</td>
+<td align="center">True</td>
+<td align="center">True</td>
+</tr>
+<tr>
+<td align="center">True</td>
+<td align="center">or</td>
+<td align="center">False</td>
+<td align="center">True</td>
+</tr>
+<tr>
+<td align="center">False</td>
+<td align="center">or</td>
+<td align="center">True</td>
+<td align="center">True</td>
+</tr>
+<tr>
+<td align="center">False</td>
+<td align="center">or</td>
+<td align="center">False</td>
+<td align="center">False</td>
+</tr>
+</tbody></table>
+<h4 id="非运算"><a href="#非运算" class="headerlink" title="非运算"></a>非运算</h4><blockquote>
+<p>把True变为False，或者把False变为True：</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">运算符</th>
+<th align="center">值</th>
+<th align="center">结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">not</td>
+<td align="center">True</td>
+<td align="center">False</td>
+</tr>
+<tr>
+<td align="center">or</td>
+<td align="center">False</td>
+<td align="center">True</td>
+</tr>
+</tbody></table>
+<h4 id="短路计算"><a href="#短路计算" class="headerlink" title="短路计算"></a>短路计算</h4><p>在Python中，布尔类型还可以与其他数据类型做 and、or和not运算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="literal">True</span></span><br><span class="line"><span class="keyword">print</span> a <span class="keyword">and</span> <span class="string">'a=T'</span> <span class="keyword">or</span> <span class="string">'a=F</span></span><br></pre></td></tr></table></figure>
+
+<p>计算结果不是布尔类型，而是字符串 ‘a=T’，这是为什么呢？<br>因为Python把0、空字符串’’和None看成 False，其他数值和非空字符串都看成 True，所以：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span> <span class="keyword">and</span> <span class="string">'a=T'</span> 计算结果是 <span class="string">'a=T'</span></span><br><span class="line">继续计算 <span class="string">'a=T'</span> <span class="keyword">or</span> <span class="string">'a=F'</span> 计算结果还是 <span class="string">'a=T'</span></span><br></pre></td></tr></table></figure>
+
+<p>要解释上述结果，又涉及到 and 和 or 运算的一条重要法则：短路计算。</p>
 <ul>
-<li><p>用git bash执行如下命令,如果提示：No such file or directory 说明你是第一次使用git<br><code>$ cd ~/. ssh #检查本机已存在的ssh密钥</code></p>
-</li>
-<li><p>然后连续3次回车，最终会生成一个文件在用户目录下，打开用户目录，找到.ssh\id_rsa.pub文件，记事本打开并复制里面的内容，打开你的github主页，进入个人设置 -&gt; SSH and GPG keys -&gt; New SSH key；将刚复制的内容粘贴到key那里，title随便填，保存。<br><code>ssh-keygen -t rsa -C &quot;邮件地址&quot;</code></p>
-</li>
-<li><p>测试SSH-Key是否设置成功</p>
-</li>
+<li>在计算 a and b 时，如果 a 是 False，则根据与运算法则，整个结果必定为 False，因此返回 a；如果 a 是 True，则整个计算结果必定取决与 b，因此返回 b。</li>
+<li>在计算 a or b 时，如果 a 是 True，则根据或运算法则，整个计算结果必定为 True，因此返回 a；如果 a 是 False，则整个计算结果必定取决于 b，因此返回 b。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> ssh -T git@github.com # 注意邮箱地址不用改</span><br><span class="line"></span><br><span class="line"># 如果提示Are you sure you want to continue connecting (yes/no)?，输入yes，然后会看到：</span><br><span class="line"># Hi 【用户名】! You’ve successfully authenticated, but GitHub does not provide shell access.</span><br><span class="line"># 看到这个信息说明SSH已配置成功！</span><br></pre></td></tr></table></figure>
+<p><code>所以Python解释器在做布尔运算时，只要能提前确定计算结果，它就不会往后算了，直接返回结果</code></p>
 
-<ul>
-<li>配置全局用户名和邮箱</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global user.name &quot;用户名&quot; # 你的github用户名，非昵称</span><br><span class="line">$ git config --global user.email &quot;邮箱&quot; # 填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
-
-<h3 id="五、Hexo部分"><a href="#五、Hexo部分" class="headerlink" title="五、Hexo部分"></a>五、Hexo部分</h3><ul>
-<li>安装Hexo</li>
-</ul>
-<p><code>npm install -g hexo</code></p>
-<ul>
-<li>初始化Hexo</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /d/workspaces/hexo/ # 工作目录</span><br><span class="line">hexo init</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>部署、启动服务</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 生成</span><br><span class="line">hexo s # 启动服务</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>本地预览问题</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s是开启本地预览服务，打开浏览器访问 http://localhost:4000 即可看到内容，很多人会碰到浏览器一直在转圈但是就是加载不出来的问题，一般情况下是因为端口占用的缘故</span><br></pre></td></tr></table></figure>
-
-<h3 id="六、修改Hexo主题"><a href="#六、修改Hexo主题" class="headerlink" title="六、修改Hexo主题"></a>六、修改Hexo主题</h3><ul>
-<li><p>官网主题<br><code>https://hexo.io/themes/</code></p>
-</li>
-<li><p>新推荐极简主题<br><code>https://github.com/aircloud/hexo-theme-aircloud</code></p>
-</li>
-<li><p>更换主题(以yilia为例)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://github.com/litten/hexo-theme-yilia</span><br><span class="line"></span><br><span class="line"> - 进入目录下载主题</span><br><span class="line">cd /d/workspaces/hexo/</span><br><span class="line">git clone https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>修改配置文件</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修改_config.yml中的theme: landscape改为theme: yilia，然后重新执行hexo g来重新生成。</span><br><span class="line">如果出现一些莫名其妙的问题，可以先执行hexo clean来清理一下public的内容，然后再来重新生成和发布。</span><br></pre></td></tr></table></figure>
-
-<h3 id="七、上传到github"><a href="#七、上传到github" class="headerlink" title="七、上传到github"></a>七、上传到github</h3><ul>
-<li>修改配置文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:用户名/用户名.github.io.git</span><br><span class="line">  branch: master</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>安装插件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 部署前还需要安装插件，git bash执行</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>提交至Github</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 如果一切正常，可以执行hexo d将代码上传至github，之后就可以打开https://用户名.github.io/浏览你的个人博客了</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-
-<h3 id="八、常用hexo命令"><a href="#八、常用hexo命令" class="headerlink" title="八、常用hexo命令"></a>八、常用hexo命令</h3><ul>
-<li>常见命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo new &quot;postName&quot; #新建文章</span><br><span class="line">hexo new page &quot;pageName&quot; #新建页面</span><br><span class="line">hexo generate #生成静态页面至public目录</span><br><span class="line">hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）</span><br><span class="line">hexo deploy #部署到GitHub</span><br><span class="line">hexo help # 查看帮助</span><br><span class="line">hexo version #查看Hexo的版本</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>缩写</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo n == hexo new</span><br><span class="line">hexo g == hexo generate</span><br><span class="line">hexo s == hexo server</span><br><span class="line">hexo d == hexo deploy</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>组合命令</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo s -g #生成并本地预览</span><br><span class="line">hexo d -g #生成并上传</span><br></pre></td></tr></table></figure>
-
-<h3 id="九、写博客"><a href="#九、写博客" class="headerlink" title="九、写博客"></a>九、写博客</h3><ul>
-<li><p>写博客</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 定位到hexo目录，执行下面语句，hexo会帮我们在_posts下生成相关md文件，我们只需要打开这个文件就可以开始写博客了</span><br><span class="line">hexo new &apos;my-first-blog&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>一般完整格式如下</p>
-</li>
-</ul>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: postName #文章页面上的显示名称，一般是中文</span><br><span class="line">date: 2013-12-02 15:30:16 #文章生成时间，一般不改，当然也可以任意修改</span><br><span class="line">categories: 默认分类 #分类</span><br><span class="line">tags: [tag1,tag2,tag3] #文章标签，可空，多标签请用格式，注意:后面有个空格</span><br><span class="line">description: 附加一段文章摘要，字数最好在140字以内，会出现在meta的description里面</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">以下是正文</span><br></pre></td></tr></table></figure>
       
     </div>
     <div class="article-footer">
@@ -538,7 +554,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://elijahyg.github.io/2019/09/13/基于Github搭建Hexo个人博客/" title="基于Github搭建Hexo个人博客" target="_blank" rel="external">https://elijahyg.github.io/2019/09/13/基于Github搭建Hexo个人博客/</a>
+      <a href="https://elijahyg.github.io/2019/10/13/Python数据类型之布尔类型/" title="Python数据类型之布尔类型" target="_blank" rel="external">https://elijahyg.github.io/2019/10/13/Python数据类型之布尔类型/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -568,10 +584,10 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/09/16/Python系列/" title="Python系列汇总"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;Newer</span></a>
-    </li>
     
+    <li class="next">
+      <a href="/2019/10/11/Python数据类型之数字/" title="Python数据类型之数字"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
     
     
     <li class="toggle-toc">

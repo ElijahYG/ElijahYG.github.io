@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://elijahyg.github.io/"/>
-  <updated>2019-10-11T09:21:44.031Z</updated>
+  <updated>2019-10-13T11:26:33.749Z</updated>
   <id>https://elijahyg.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python数据类型之布尔类型</title>
+    <link href="https://elijahyg.github.io/2019/10/13/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B/"/>
+    <id>https://elijahyg.github.io/2019/10/13/Python数据类型之布尔类型/</id>
+    <published>2019-10-13T11:23:05.000Z</published>
+    <updated>2019-10-13T11:26:33.749Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="布尔类型-boolean"><a href="#布尔类型-boolean" class="headerlink" title="布尔类型(boolean)"></a>布尔类型(boolean)</h2><p>布尔值只有True和False，同时True对应二进制中1，False对应二进制中0</p><h3 id="布尔运算"><a href="#布尔运算" class="headerlink" title="布尔运算"></a>布尔运算</h3><blockquote><p>布尔运算在计算机中用来做条件判断，根据计算结果为True或者False，计算机可以自动执行不同的后续代码。</p></blockquote><h4 id="与运算"><a href="#与运算" class="headerlink" title="与运算"></a>与运算</h4><blockquote><p>只有两个布尔值都为 True 时，计算结果才为 True。</p></blockquote><table><thead><tr><th align="center">值</th><th align="center">运算符</th><th align="center">值</th><th align="center">结果</th></tr></thead><tbody><tr><td align="center">True</td><td align="center">and</td><td align="center">True</td><td align="center">True</td></tr><tr><td align="center">True</td><td align="center">and</td><td align="center">False</td><td align="center">False</td></tr><tr><td align="center">False</td><td align="center">and</td><td align="center">True</td><td align="center">False</td></tr><tr><td align="center">False</td><td align="center">and</td><td align="center">False</td><td align="center">False</td></tr></tbody></table><h4 id="或运算"><a href="#或运算" class="headerlink" title="或运算"></a>或运算</h4><blockquote><p>只要有一个布尔值为 True，计算结果就是 True。</p></blockquote><table><thead><tr><th align="center">值</th><th align="center">运算符</th><th align="center">值</th><th align="center">结果</th></tr></thead><tbody><tr><td align="center">True</td><td align="center">or</td><td align="center">True</td><td align="center">True</td></tr><tr><td align="center">True</td><td align="center">or</td><td align="center">False</td><td align="center">True</td></tr><tr><td align="center">False</td><td align="center">or</td><td align="center">True</td><td align="center">True</td></tr><tr><td align="center">False</td><td align="center">or</td><td align="center">False</td><td align="center">False</td></tr></tbody></table><h4 id="非运算"><a href="#非运算" class="headerlink" title="非运算"></a>非运算</h4><blockquote><p>把True变为False，或者把False变为True：</p></blockquote><table><thead><tr><th align="center">运算符</th><th align="center">值</th><th align="center">结果</th></tr></thead><tbody><tr><td align="center">not</td><td align="center">True</td><td align="center">False</td></tr><tr><td align="center">or</td><td align="center">False</td><td align="center">True</td></tr></tbody></table><h4 id="短路计算"><a href="#短路计算" class="headerlink" title="短路计算"></a>短路计算</h4><p>在Python中，布尔类型还可以与其他数据类型做 and、or和not运算</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = <span class="literal">True</span></span><br><span class="line"><span class="keyword">print</span> a <span class="keyword">and</span> <span class="string">'a=T'</span> <span class="keyword">or</span> <span class="string">'a=F</span></span><br></pre></td></tr></table></figure><p>计算结果不是布尔类型，而是字符串 ‘a=T’，这是为什么呢？<br>因为Python把0、空字符串’’和None看成 False，其他数值和非空字符串都看成 True，所以：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">True</span> <span class="keyword">and</span> <span class="string">'a=T'</span> 计算结果是 <span class="string">'a=T'</span></span><br><span class="line">继续计算 <span class="string">'a=T'</span> <span class="keyword">or</span> <span class="string">'a=F'</span> 计算结果还是 <span class="string">'a=T'</span></span><br></pre></td></tr></table></figure><p>要解释上述结果，又涉及到 and 和 or 运算的一条重要法则：短路计算。</p><ul><li>在计算 a and b 时，如果 a 是 False，则根据与运算法则，整个结果必定为 False，因此返回 a；如果 a 是 True，则整个计算结果必定取决与 b，因此返回 b。</li><li>在计算 a or b 时，如果 a 是 True，则根据或运算法则，整个计算结果必定为 True，因此返回 a；如果 a 是 False，则整个计算结果必定取决于 b，因此返回 b。</li></ul><p><code>所以Python解释器在做布尔运算时，只要能提前确定计算结果，它就不会往后算了，直接返回结果</code></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;布尔类型-boolean&quot;&gt;&lt;a href=&quot;#布尔类型-boolean&quot; class=&quot;headerlink&quot; title=&quot;布尔类型(boolean)&quot;&gt;&lt;/a&gt;布尔类型(boolean)&lt;/h2&gt;&lt;p&gt;布尔值只有True和False，同时True对应二进制中
+      
+    
+    </summary>
+    
+    
+      <category term="Python系列" scheme="https://elijahyg.github.io/categories/Python%E7%B3%BB%E5%88%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Python数据类型之数字</title>
@@ -117,9 +141,9 @@
     <link href="https://elijahyg.github.io/2019/09/16/Python%E7%B3%BB%E5%88%97/"/>
     <id>https://elijahyg.github.io/2019/09/16/Python系列/</id>
     <published>2019-09-16T15:21:04.000Z</published>
-    <updated>2019-10-11T16:24:13.013Z</updated>
+    <updated>2019-10-13T11:26:33.728Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Python-基础篇"><a href="#Python-基础篇" class="headerlink" title="Python_基础篇"></a>Python_基础篇</h3><blockquote><p>文章若无特别指出均表示python3.x版本下</p></blockquote><p>前提准备</p><ul><li>01-<a href="http://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/">语言起源</a></li><li>02-<a href="http://elijahyg.github.io/2019/09/25/python%20IDE%E4%BB%8B%E7%BB%8D&%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">IDE介绍 &amp; 环境搭建</a></li></ul><p>语法基础</p><ul><li>01-数据类型<ul><li>01-<a href="http://elijahyg.github.io/2019/10/11/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%95%B0%E5%AD%97/">数字类型 Integer</a></li></ul></li><li>02-运算符</li><li>03-字符编码</li></ul><p>函数</p><p>模块 &amp; 包</p><p>面向对象</p><p>异常处理</p><p>文件操作</p><p>网络编程</p><p>并发编程</p><p>原理探究</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Python-基础篇"><a href="#Python-基础篇" class="headerlink" title="Python_基础篇"></a>Python_基础篇</h3><blockquote><p>文章若无特别指出均表示python3.x版本下</p></blockquote><p>前提准备</p><ul><li>01-<a href="http://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/">语言起源</a></li><li>02-<a href="http://elijahyg.github.io/2019/09/25/python%20IDE%E4%BB%8B%E7%BB%8D&%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">IDE介绍 &amp; 环境搭建</a></li></ul><p>语法基础</p><ul><li>01-数据类型<ul><li><a href="http://elijahyg.github.io/2019/10/11/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%95%B0%E5%AD%97/">数字类型 Integer</a></li><li><a href="http://elijahyg.github.io/2019/10/13/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B/">布尔类型 Boolean</a></li></ul></li><li>02-运算符</li><li>03-字符编码</li></ul><p>函数</p><p>模块 &amp; 包</p><p>面向对象</p><p>异常处理</p><p>文件操作</p><p>网络编程</p><p>并发编程</p><p>原理探究</p>]]></content>
     
     <summary type="html">
     
