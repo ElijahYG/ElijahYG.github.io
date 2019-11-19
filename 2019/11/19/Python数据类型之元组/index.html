@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Python数据类型之元组.md | Yang&#39;s Blog</title>
+  <meta name="description" content="元组类型(tuple)1. 元组介绍Python的元组与列表类似，同样可通过索引访问，支持异构，任意嵌套。不同之处在于元组的元素不能修改。元组使用小括号，列表使用方括号。 1.1 定义方式12345678910111213141516171819202122232425262728293031# 定义：()内可以有多个任意类型的值，逗号分隔# 定义方法-定义元组&amp;gt;&amp;gt;&amp;gt; tup1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python数据类型之元组.md">
+<meta property="og:url" content="https://elijahyg.github.io/2019/11/19/Python数据类型之元组/index.html">
+<meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="元组类型(tuple)1. 元组介绍Python的元组与列表类似，同样可通过索引访问，支持异构，任意嵌套。不同之处在于元组的元素不能修改。元组使用小括号，列表使用方括号。 1.1 定义方式12345678910111213141516171819202122232425262728293031# 定义：()内可以有多个任意类型的值，逗号分隔# 定义方法-定义元组&amp;gt;&amp;gt;&amp;gt; tup1">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-11-19T15:28:37.353Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python数据类型之元组.md">
+<meta name="twitter:description" content="元组类型(tuple)1. 元组介绍Python的元组与列表类似，同样可通过索引访问，支持异构，任意嵌套。不同之处在于元组的元素不能修改。元组使用小括号，列表使用方括号。 1.1 定义方式12345678910111213141516171819202122232425262728293031# 定义：()内可以有多个任意类型的值，逗号分隔# 定义方法-定义元组&amp;gt;&amp;gt;&amp;gt; tup1">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://elijahyg.github.io/2019/11/19/Python数据类型之元组/index.html">
+  
+  
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ElijahYG" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Elijah Yang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="Search" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="Type something..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">Home</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">Archives</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">Categories</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">Tags</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">Repository</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">Books</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">Links</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">About</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">Board</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>顺境内敛 逆境不屈</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go系列/">Go系列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python系列/">Python系列</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Archive</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">October 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">September 2019</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/11/19/Python数据类型之元组/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/11/19/Python数据类型之元组/" class="title">Python数据类型之元组.md</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-11-19T15:24:08.000Z" itemprop="datePublished">2019-11-19</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/10/30/Python数据类型之列表/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/10/30/Python数据类型之列表/" class="title">Python数据类型之列表</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-10-30T15:17:13.000Z" itemprop="datePublished">2019-10-30</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/10/24/Python数据类型之字符串类型/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/10/24/Python数据类型之字符串类型/" class="title">Python数据类型之字符串类型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-10-23T16:30:24.000Z" itemprop="datePublished">2019-10-24</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/10/13/Python数据类型之布尔类型/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/10/13/Python数据类型之布尔类型/" class="title">Python数据类型之布尔类型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-10-13T11:23:05.000Z" itemprop="datePublished">2019-10-13</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2019/10/11/Python数据类型之数字/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/10/11/Python数据类型之数字/" class="title">Python数据类型之数字</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-10-11T09:19:25.000Z" itemprop="datePublished">2019-10-11</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">Catalogue</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#元组类型-tuple"><span class="toc-number">1.</span> <span class="toc-text">元组类型(tuple)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-元组介绍"><span class="toc-number">1.1.</span> <span class="toc-text">1. 元组介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-定义方式"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 定义方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#★2-常用元组方法"><span class="toc-number">1.2.</span> <span class="toc-text">★2. 常用元组方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-tuple-index-访问元组中的值"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 tuple[index] 访问元组中的值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-修改元组"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 修改元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-删除元组"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 删除元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-元组运算符"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 元组运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-无关闭分隔符"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 无关闭分隔符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-6-len-计算元组元素个数"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 len() 计算元组元素个数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-7-max-返回元组中元素最大值"><span class="toc-number">1.2.7.</span> <span class="toc-text">2.7 max() 返回元组中元素最大值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-8-min-返回元组中元素最小值"><span class="toc-number">1.2.8.</span> <span class="toc-text">2.8 min() 返回元组中元素最小值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-9-tuple-将列表转换为元组"><span class="toc-number">1.2.9.</span> <span class="toc-text">2.9 tuple() 将列表转换为元组</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Python数据类型之元组" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python数据类型之元组.md
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/11/19/Python数据类型之元组/" class="article-date">
+	  <time datetime="2019-11-19T15:24:08.000Z" itemprop="datePublished">2019-11-19</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python系列/">Python系列</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/11/19/Python数据类型之元组/#comments" class="article-comment-link">Comments</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">Word Count: 1k(words)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">Read Count: 4(minutes)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="元组类型-tuple"><a href="#元组类型-tuple" class="headerlink" title="元组类型(tuple)"></a>元组类型(tuple)</h2><h3 id="1-元组介绍"><a href="#1-元组介绍" class="headerlink" title="1. 元组介绍"></a>1. 元组介绍</h3><p>Python的元组与列表类似，同样可通过索引访问，支持异构，任意嵌套。不同之处在于元组的元素不能修改。元组使用小括号，列表使用方括号。</p>
+<h4 id="1-1-定义方式"><a href="#1-1-定义方式" class="headerlink" title="1.1 定义方式"></a>1.1 定义方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义：()内可以有多个任意类型的值，逗号分隔</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义方法-定义元组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1 = (<span class="string">'physics'</span>, <span class="string">'chemistry'</span>, <span class="number">1997</span>, <span class="number">2000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup2 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span> )</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup3 = <span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"c"</span>, <span class="string">"d"</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup1)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup2)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup3)</span><br><span class="line"></span><br><span class="line">(<span class="string">'physics'</span>, <span class="string">'chemistry'</span>, <span class="number">1997</span>, <span class="number">2000</span>)</span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'c'</span>, <span class="string">'d'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义方法-定义空元组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1 = ()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup1)</span><br><span class="line"></span><br><span class="line">()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义方法-元组中只包含一个元素时，需要在元素后面添加逗号</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1 = (<span class="string">'yang'</span>,)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup1)</span><br><span class="line"></span><br><span class="line">(<span class="string">'yang'</span>,)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义方法2</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1=tuple((<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'peach'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup1)</span><br><span class="line"></span><br><span class="line">(<span class="string">'apple'</span>, <span class="string">'banana'</span>, <span class="string">'peach'</span>)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="★2-常用元组方法"><a href="#★2-常用元组方法" class="headerlink" title="★2. 常用元组方法"></a>★2. 常用元组方法</h3><h4 id="2-1-tuple-index-访问元组中的值"><a href="#2-1-tuple-index-访问元组中的值" class="headerlink" title="2.1 tuple[index] 访问元组中的值"></a>2.1 tuple[index] 访问元组中的值</h4><p><strong>语法说明</strong></p>
+<blockquote>
+<p>使用下标索引来访问列表中的值，下标从0开始计数</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用下标索引来访问列表中的值，下标从0开始计数</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1 = (<span class="string">'physics'</span>, <span class="string">'chemistry'</span>, <span class="number">1997</span>, <span class="number">2000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup2 = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span> )</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"tup1[0]: "</span>,tup1[<span class="number">0</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"tup2[1:5]: "</span>,tup2[<span class="number">1</span>:<span class="number">5</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"tup2[1:]: "</span>,tup2[<span class="number">1</span>:]:)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"tup2[-2]: "</span>,tup2[<span class="number">-2</span>]:)</span><br><span class="line"></span><br><span class="line">tup1[<span class="number">0</span>]: physics</span><br><span class="line">tup2[<span class="number">1</span>:<span class="number">5</span>]: (<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">tup2[<span class="number">1</span>:]: (<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>)</span><br><span class="line">tup2[<span class="number">-2</span>]: <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-2-修改元组"><a href="#2-2-修改元组" class="headerlink" title="2.2 修改元组"></a>2.2 修改元组</h4><blockquote>
+<p>元组中的元素值是不允许修改的，但我们可以对元组进行连接组合</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 以下修改元组元素操作是非法的。</span></span><br><span class="line"><span class="comment"># tup1[0] = 100</span></span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1 = (<span class="number">12</span>, <span class="number">34.56</span>);</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup2 = (<span class="string">'abc'</span>, <span class="string">'xyz'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建一个新的元组</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup3 = tup1 + tup2</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup3)</span><br><span class="line"></span><br><span class="line">(<span class="number">12</span>, <span class="number">34.56</span>, <span class="string">'abc'</span>, <span class="string">'xyz'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-3-删除元组"><a href="#2-3-删除元组" class="headerlink" title="2.3 删除元组"></a>2.3 删除元组</h4><blockquote>
+<p>元组中的元素值是不允许删除的，但我们可以使用del语句来删除整个元组</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup = (<span class="string">'physics'</span>, <span class="string">'chemistry'</span>, <span class="number">1997</span>, <span class="number">2000</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> tup</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(<span class="string">"After deleting tup : "</span>,tup)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上实例元组被删除后，输出变量会有异常信息</span></span><br><span class="line">(<span class="string">'physics'</span>, <span class="string">'chemistry'</span>, <span class="number">1997</span>, <span class="number">2000</span>)</span><br><span class="line">After deleting tup :</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"test_deltup.py"</span>, line <span class="number">9</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">print</span> tup;</span><br><span class="line">NameError: name <span class="string">'tup'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-4-元组运算符"><a href="#2-4-元组运算符" class="headerlink" title="2.4 元组运算符"></a>2.4 元组运算符</h4><blockquote>
+<p>与字符串一样，元组之间可以使用 + 号和 * 号进行运算。这就意味着他们可以组合和复制，运算后会生成一个新的元组。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th align="center">Python 表达式</th>
+<th align="center">结果结果</th>
+<th align="center">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">len((1, 2, 3))</td>
+<td align="center">3</td>
+<td align="center">计算元素个数</td>
+</tr>
+<tr>
+<td align="center">(1, 2, 3) + (4, 5, 6)</td>
+<td align="center">(1, 2, 3, 4, 5, 6)</td>
+<td align="center">连接</td>
+</tr>
+<tr>
+<td align="center">(‘copy’,) * 4</td>
+<td align="center">(‘copy’, ‘copy’, ‘copy’, ‘copy’)</td>
+<td align="center">复制</td>
+</tr>
+<tr>
+<td align="center">3 in (1, 2, 3)</td>
+<td align="center">True</td>
+<td align="center">元素是否存在</td>
+</tr>
+<tr>
+<td align="center">for x in (1, 2, 3): print x,</td>
+<td align="center">1 2 3</td>
+<td align="center">迭代</td>
+</tr>
+</tbody></table>
+<h4 id="2-5-无关闭分隔符"><a href="#2-5-无关闭分隔符" class="headerlink" title="2.5 无关闭分隔符"></a>2.5 无关闭分隔符</h4><blockquote>
+<p>任意无符号的对象，以逗号隔开，默认为元组</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup1 = <span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tup2 = <span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>,<span class="string">'E'</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup1)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tup2)</span><br><span class="line"></span><br><span class="line">(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line">(<span class="string">'A'</span>, <span class="string">'B'</span>, <span class="string">'C'</span>, <span class="string">'D'</span>, <span class="string">'E'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="2-6-len-计算元组元素个数"><a href="#2-6-len-计算元组元素个数" class="headerlink" title="2.6 len() 计算元组元素个数"></a>2.6 len() 计算元组元素个数</h4><p><strong>语法说明</strong></p>
+<blockquote>
+<p>len(tuple)</p>
+</blockquote>
+<p><strong>参数说明</strong></p>
+<ul>
+<li>tuple – 元组对象</li>
+</ul>
+<p><strong>返回值</strong></p>
+<blockquote>
+<p>该方法返回元组中元素个数</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tuple1 = (<span class="string">'Google'</span>, <span class="string">'Baidu'</span>, <span class="string">'Taobao'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(len(tuple1))</span><br><span class="line"></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-7-max-返回元组中元素最大值"><a href="#2-7-max-返回元组中元素最大值" class="headerlink" title="2.7 max() 返回元组中元素最大值"></a>2.7 max() 返回元组中元素最大值</h4><p><strong>语法说明</strong></p>
+<blockquote>
+<p>max(tuple)</p>
+</blockquote>
+<p><strong>参数说明</strong></p>
+<ul>
+<li>tuple – 元组对象</li>
+</ul>
+<p><strong>返回值</strong></p>
+<blockquote>
+<p>该方法返回元组中元素最大值。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tuple2 = (<span class="string">'5'</span>, <span class="string">'4'</span>, <span class="string">'8'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(max(tuple2))</span><br><span class="line"></span><br><span class="line"><span class="number">8</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-8-min-返回元组中元素最小值"><a href="#2-8-min-返回元组中元素最小值" class="headerlink" title="2.8 min() 返回元组中元素最小值"></a>2.8 min() 返回元组中元素最小值</h4><p><strong>语法说明</strong></p>
+<blockquote>
+<p>min(tuple)</p>
+</blockquote>
+<p><strong>参数说明</strong></p>
+<ul>
+<li>tuple – 元组对象</li>
+</ul>
+<p><strong>返回值</strong></p>
+<blockquote>
+<p>该方法返回值返回元组中元素最小值</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>tuple2 = (<span class="string">'5'</span>, <span class="string">'4'</span>, <span class="string">'8'</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(min(tuple2))</span><br><span class="line"></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-9-tuple-将列表转换为元组"><a href="#2-9-tuple-将列表转换为元组" class="headerlink" title="2.9 tuple() 将列表转换为元组"></a>2.9 tuple() 将列表转换为元组</h4><p><strong>语法说明</strong></p>
+<blockquote>
+<p>tuple(seq)</p>
+</blockquote>
+<p><strong>参数说明</strong></p>
+<ul>
+<li>seq – 序列对象，如列表</li>
+</ul>
+<p><strong>返回值</strong></p>
+<blockquote>
+<p>该方法返回值转换后的元组对象</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>list1= [<span class="string">'Google'</span>, <span class="string">'Taobao'</span>, <span class="string">'Facebook'</span>, <span class="string">'Baidu'</span>]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>tuple1=tuple(list1)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>print(tuple1)</span><br><span class="line"></span><br><span class="line">(<span class="string">'Google'</span>, <span class="string">'Taobao'</span>, <span class="string">'Facebook'</span>, <span class="string">'Baidu'</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://elijahyg.github.io/2019/11/19/Python数据类型之元组/" title="Python数据类型之元组.md" target="_blank" rel="external">https://elijahyg.github.io/2019/11/19/Python数据类型之元组/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 国际许可协议</a>进行许可。
+    </li>
+  </ul>
+</blockquote>
+
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2019/10/30/Python数据类型之列表/" title="Python数据类型之列表"><span>Older&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="Catalogue" role="button">
+        <span>[&nbsp;</span><span>Catalogue</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>$</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>Maybe you could buy me a cup of coffee.</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open alipay app scan this qrcode, buy me a coffee!</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="Scan Qrcode" title="Scan" />
+              </div>
+              <p class="text-muted mv">Scan this qrcode</p>
+              <p class="text-grey">Open wechat app scan this qrcode, buy me a coffee!</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> alipay</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> wechat payment</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'e9a82c38e4a1a8590a33',
+    clientSecret: 'bf3deb8d2b72a593c950e26693e5c56bf98a7bac',
+    repo: 'ElijahYG.github.io',
+    owner: 'ElijahYG',
+    admin: ['ElijahYG'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
