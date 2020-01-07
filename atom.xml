@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://elijahyg.github.io/"/>
-  <updated>2019-12-26T15:37:14.127Z</updated>
+  <updated>2020-01-07T15:03:43.855Z</updated>
   <id>https://elijahyg.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python数据类型之类型转换内置函数汇总</title>
+    <link href="https://elijahyg.github.io/2020/01/07/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/"/>
+    <id>https://elijahyg.github.io/2020/01/07/Python数据类型之类型转换内置函数汇总/</id>
+    <published>2020-01-07T14:57:13.000Z</published>
+    <updated>2020-01-07T15:03:43.855Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="类型转换内置函数"><a href="#类型转换内置函数" class="headerlink" title="类型转换内置函数"></a>类型转换内置函数</h2><h3 id="数字类型"><a href="#数字类型" class="headerlink" title="数字类型"></a>数字类型</h3><ul><li><code>int(x [,base])</code>：将x转换为一个整数</li><li><code>float(x)</code>：将x转换为一个浮点数</li><li><code>complex([real[, imag]])</code>：返回一个值为real + imag*1j的复数</li><li><code>chr(x)</code>：将整数x转换为一个字符</li><li><code>unichr(x)</code>：将整数x转换为Unicode字符 </li></ul><h3 id="字符串类型"><a href="#字符串类型" class="headerlink" title="字符串类型"></a>字符串类型</h3><ul><li><code>str(x)</code>：将x转换为字符串</li><li><code>repr(x)</code>：将x转换为表达式字符串</li><li><code>eval(str)</code>：用于计算在字符串中的有效python表达式，并返回对象</li><li><code>ord(x)</code>：将字符串x转换为整数</li><li><code>hex(x)</code>：将字符串x转换为十六进制字符串</li><li><code>oct(x)</code>：将字符串x转换为八进制字符串</li></ul><h3 id="列表类型"><a href="#列表类型" class="headerlink" title="列表类型"></a>列表类型</h3><ul><li><code>list(s)</code>：将序列s转换为一个列表</li></ul><h3 id="元组类型"><a href="#元组类型" class="headerlink" title="元组类型"></a>元组类型</h3><ul><li><code>tuple(s)</code>：将序列s转换为一个元组</li></ul><h3 id="字典类型"><a href="#字典类型" class="headerlink" title="字典类型"></a>字典类型</h3><ul><li><code>dict(d)</code>：创建字典，d需要是形如(key,value)的元组</li></ul><h3 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h3><ul><li><code>set(s)</code>：将s转换为可变集合</li><li><code>frozenset(s)</code>：将s转换伟不可变集合</li></ul><h3 id="类型间相互转换"><a href="#类型间相互转换" class="headerlink" title="类型间相互转换"></a>类型间相互转换</h3><ul><li>字符串、列表相互转换</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list -&gt; string（list中的元素需为字符串）</span></span><br><span class="line"></span><br><span class="line">l = [<span class="string">'y'</span>,<span class="string">'a'</span>,<span class="string">'n'</span>,<span class="string">'g'</span>]</span><br><span class="line">s = <span class="string">''</span>.join(l)</span><br><span class="line">print(s)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'yang'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># string -&gt; list</span></span><br><span class="line">s = <span class="string">'y, a, n, g'</span></span><br><span class="line">l = s.split(<span class="string">','</span>)</span><br><span class="line">print(l)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>[<span class="string">'y'</span>,<span class="string">'a'</span>,<span class="string">'n'</span>,<span class="string">'g'</span>]</span><br></pre></td></tr></table></figure><ul><li>列表/元组转换为字典</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># list/tuple -&gt; dict</span></span><br><span class="line">l = [<span class="string">'a'</span>, <span class="string">'b'</span>]</span><br><span class="line">d = dict.fromkeys(l)</span><br><span class="line">print(d)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>&#123;<span class="string">'a'</span>: <span class="literal">None</span>, <span class="string">'b'</span>: <span class="literal">None</span>&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;类型转换内置函数&quot;&gt;&lt;a href=&quot;#类型转换内置函数&quot; class=&quot;headerlink&quot; title=&quot;类型转换内置函数&quot;&gt;&lt;/a&gt;类型转换内置函数&lt;/h2&gt;&lt;h3 id=&quot;数字类型&quot;&gt;&lt;a href=&quot;#数字类型&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+    
+      <category term="Python系列" scheme="https://elijahyg.github.io/categories/Python%E7%B3%BB%E5%88%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Python数据类型之py2与py3字符串类型区别</title>
@@ -285,9 +309,9 @@
     <link href="https://elijahyg.github.io/2019/09/16/Python%E7%B3%BB%E5%88%97/"/>
     <id>https://elijahyg.github.io/2019/09/16/Python系列/</id>
     <published>2019-09-16T15:21:04.000Z</published>
-    <updated>2019-12-26T15:38:51.150Z</updated>
+    <updated>2020-01-07T15:03:31.420Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Python-基础篇"><a href="#Python-基础篇" class="headerlink" title="Python_基础篇"></a>Python_基础篇</h3><blockquote><p>文章若无特别指出均表示python3.x版本下</p></blockquote><p>前提准备</p><ul><li>01-<a href="http://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/">语言起源</a></li><li>02-<a href="http://elijahyg.github.io/2019/09/25/python%20IDE%E4%BB%8B%E7%BB%8D&%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">IDE介绍 &amp; 环境搭建</a></li></ul><p>语法基础</p><ul><li>01-数据类型<ul><li><a href="http://elijahyg.github.io/2019/10/11/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%95%B0%E5%AD%97/">数字类型 Integer</a></li><li><a href="http://elijahyg.github.io/2019/10/13/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B/">布尔类型 Boolean</a></li><li><a href="http://elijahyg.github.io/2019/10/24/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B/">字符串类型 String</a></li><li><a href="http://elijahyg.github.io/2019/10/30/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%88%97%E8%A1%A8/">列表类型 List</a></li><li><a href="http://elijahyg.github.io/2019/11/19/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%85%83%E7%BB%84/">元组类型 Tuple</a></li><li><a href="http://elijahyg.github.io/2019/12/02/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%AD%97%E5%85%B8/">字典类型 Dict</a></li><li><a href="http://elijahyg.github.io/2019/12/12/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%9B%86%E5%90%88/">集合类型 Set</a></li><li><a href="http://elijahyg.github.io/2019/12/26/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8Bpy2%E4%B8%8Epy3%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%E5%8C%BA%E5%88%AB/">Py2与Py3字符串类型区别</a></li></ul></li><li>02-运算符</li><li>03-字符编码</li></ul><p>函数</p><p>模块 &amp; 包</p><p>面向对象</p><p>异常处理</p><p>文件操作</p><p>网络编程</p><p>并发编程</p><p>原理探究</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="Python-基础篇"><a href="#Python-基础篇" class="headerlink" title="Python_基础篇"></a>Python_基础篇</h3><blockquote><p>文章若无特别指出均表示python3.x版本下</p></blockquote><p>前提准备</p><ul><li>01-<a href="http://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/">语言起源</a></li><li>02-<a href="http://elijahyg.github.io/2019/09/25/python%20IDE%E4%BB%8B%E7%BB%8D&%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/">IDE介绍 &amp; 环境搭建</a></li></ul><p>语法基础</p><ul><li>01-数据类型<ul><li><a href="http://elijahyg.github.io/2019/10/11/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E6%95%B0%E5%AD%97/">数字类型 Integer</a></li><li><a href="http://elijahyg.github.io/2019/10/13/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%B8%83%E5%B0%94%E7%B1%BB%E5%9E%8B/">布尔类型 Boolean</a></li><li><a href="http://elijahyg.github.io/2019/10/24/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B/">字符串类型 String</a></li><li><a href="http://elijahyg.github.io/2019/10/30/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%88%97%E8%A1%A8/">列表类型 List</a></li><li><a href="http://elijahyg.github.io/2019/11/19/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%85%83%E7%BB%84/">元组类型 Tuple</a></li><li><a href="http://elijahyg.github.io/2019/12/02/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E5%AD%97%E5%85%B8/">字典类型 Dict</a></li><li><a href="http://elijahyg.github.io/2019/12/12/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%9B%86%E5%90%88/">集合类型 Set</a></li><li><a href="http://elijahyg.github.io/2019/12/26/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8Bpy2%E4%B8%8Epy3%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%B1%BB%E5%9E%8B%E5%8C%BA%E5%88%AB/">Py2与Py3字符串类型区别</a></li><li><a href="http://elijahyg.github.io/2020/01/07/Python%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E4%B9%8B%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0%E6%B1%87%E6%80%BB/">类型转换内置函数汇总</a></li></ul></li><li>02-运算符</li><li>03-字符编码</li></ul><p>函数</p><p>模块 &amp; 包</p><p>面向对象</p><p>异常处理</p><p>文件操作</p><p>网络编程</p><p>并发编程</p><p>原理探究</p>]]></content>
     
     <summary type="html">
     
