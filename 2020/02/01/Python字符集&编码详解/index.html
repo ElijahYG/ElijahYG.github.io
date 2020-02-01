@@ -17,23 +17,24 @@
   <meta http-equiv="window-target" content="_top">
   
   
-  <title>Python数据类型之数字 | Yang&#39;s Blog</title>
-  <meta name="description" content="数字类型(integer)整型(int)在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 长整型(long)和C语言不同，Python的长整数没有指定位宽，即：Pyth">
+  <title>Python字符集&amp;编码详解 | Yang&#39;s Blog</title>
+  <meta name="description" content="字符集&amp;amp;编码详解1 定义 编码/解码（encode/decode）：计算机中储存的信息都是用二进制数表示的；而我们在屏幕上看到的英文、汉字等字符是二进制数转换之后的结果。通俗的说，按照何种规则将字符存储在计算机中，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”。如果使用了错误的解码规则，则导致解码错误或者乱码。 字符集（charset）：是一个系统支持的所有抽象字">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python数据类型之数字">
-<meta property="og:url" content="https://elijahyg.github.io/2019/10/11/Python数据类型之数字/index.html">
+<meta property="og:title" content="Python字符集&amp;编码详解">
+<meta property="og:url" content="https://elijahyg.github.io/2020/02/01/Python字符集&编码详解/index.html">
 <meta property="og:site_name" content="Yang&#39;s Blog">
-<meta property="og:description" content="数字类型(integer)整型(int)在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 长整型(long)和C语言不同，Python的长整数没有指定位宽，即：Pyth">
+<meta property="og:description" content="字符集&amp;amp;编码详解1 定义 编码/解码（encode/decode）：计算机中储存的信息都是用二进制数表示的；而我们在屏幕上看到的英文、汉字等字符是二进制数转换之后的结果。通俗的说，按照何种规则将字符存储在计算机中，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”。如果使用了错误的解码规则，则导致解码错误或者乱码。 字符集（charset）：是一个系统支持的所有抽象字">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/integer_1.png">
-<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/integer_2.png">
-<meta property="og:updated_time" content="2019-10-11T09:21:44.031Z">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/ascii_1.png">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/ascii_2.png">
+<meta property="og:image" content="https://elijahyg.github.io/images/post_imgs/gb2312.png">
+<meta property="og:updated_time" content="2020-02-01T08:08:25.715Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python数据类型之数字">
-<meta name="twitter:description" content="数字类型(integer)整型(int)在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807 长整型(long)和C语言不同，Python的长整数没有指定位宽，即：Pyth">
-<meta name="twitter:image" content="https://elijahyg.github.io/images/post_imgs/integer_1.png">
+<meta name="twitter:title" content="Python字符集&amp;编码详解">
+<meta name="twitter:description" content="字符集&amp;amp;编码详解1 定义 编码/解码（encode/decode）：计算机中储存的信息都是用二进制数表示的；而我们在屏幕上看到的英文、汉字等字符是二进制数转换之后的结果。通俗的说，按照何种规则将字符存储在计算机中，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”。如果使用了错误的解码规则，则导致解码错误或者乱码。 字符集（charset）：是一个系统支持的所有抽象字">
+<meta name="twitter:image" content="https://elijahyg.github.io/images/post_imgs/ascii_1.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://elijahyg.github.io/2019/10/11/Python数据类型之数字/index.html">
+  <link rel="canonical" href="https://elijahyg.github.io/2020/02/01/Python字符集&编码详解/index.html">
   
   
     <link rel="icon" href="images/logo.ico" type="image/x-icon">
@@ -380,21 +381,21 @@
   <div class="slimContent">
     <nav id="toc" class="article-toc">
       <h3 class="toc-title">文章目录</h3>
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#数字类型-integer"><span class="toc-number">1.</span> <span class="toc-text">数字类型(integer)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#整型-int"><span class="toc-number">1.1.</span> <span class="toc-text">整型(int)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#长整型-long"><span class="toc-number">1.2.</span> <span class="toc-text">长整型(long)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#浮点型-float"><span class="toc-number">1.3.</span> <span class="toc-text">浮点型(float)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#复数-complex"><span class="toc-number">1.4.</span> <span class="toc-text">复数(complex)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#进制转换"><span class="toc-number">1.5.</span> <span class="toc-text">进制转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小知识点"><span class="toc-number">1.6.</span> <span class="toc-text">小知识点</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#字符集-amp-编码详解"><span class="toc-number">1.</span> <span class="toc-text">字符集&amp;编码详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-定义"><span class="toc-number">1.1.</span> <span class="toc-text">1 定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-字符集的发展过程"><span class="toc-number">1.2.</span> <span class="toc-text">2 字符集的发展过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-ASCII-字符集-amp-编码"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1. ASCII 字符集&amp;编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-GBXXXX-字符集-amp-编码"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2. GBXXXX 字符集&amp;编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-BIG5-字符集-amp-编码"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3. BIG5 字符集&amp;编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-Unicode字符集-amp-UTF编码"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4. Unicode字符集 &amp; UTF编码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-5-字符编码发展图"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5. 字符编码发展图</span></a></li></ol></li></ol></li></ol>
     </nav>
   </div>
 </aside>
 
 <main class="main" role="main">
   <div class="content">
-  <article id="post-Python数据类型之数字" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="post-Python字符集&amp;编码详解" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      Python数据类型之数字
+      Python字符集&amp;编码详解
     </h1>
   
 
@@ -402,8 +403,8 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="icon icon-calendar-check"></i>
-	<a href="/2019/10/11/Python数据类型之数字/" class="article-date">
-	  <time datetime="2019-10-11T09:19:25.000Z" itemprop="datePublished">2019-10-11</time>
+	<a href="/2020/02/01/Python字符集&编码详解/" class="article-date">
+	  <time datetime="2020-02-01T08:00:15.000Z" itemprop="datePublished">2020-02-01</time>
 	</a>
 </span>
         
@@ -423,43 +424,51 @@
 	</span>
 
 
-        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/10/11/Python数据类型之数字/#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/02/01/Python字符集&编码详解/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 579(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2.7k(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
 	
 
       </div>
     </div>
     <div class="article-entry marked-body" itemprop="articleBody">
       
-        <h2 id="数字类型-integer"><a href="#数字类型-integer" class="headerlink" title="数字类型(integer)"></a>数字类型(integer)</h2><h3 id="整型-int"><a href="#整型-int" class="headerlink" title="整型(int)"></a>整型(int)</h3><p>在32位机器上，整数的位数为32位，取值范围为-2**31～2**31-1，即-2147483648～2147483647<br>在64位系统上，整数的位数为64位，取值范围为-2**63～2**63-1，即-9223372036854775808～9223372036854775807</p>
-<h3 id="长整型-long"><a href="#长整型-long" class="headerlink" title="长整型(long)"></a>长整型(long)</h3><p>和C语言不同，Python的长整数没有指定位宽，即：Python没有限制长整数数值的大小，但实际上由于机器内存有限，我们使用的长整数数值不可能无限大。<br>自从Python2.2起，如果整数发生溢出，Python会自动将整数数据转换为长整数，所以如今在长整数数据后面不加字母L也不会导致严重后果了。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在python2.x 中（python3.x中没有长整型的概念）：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>num=<span class="number">2L</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>type(num)</span><br><span class="line">    &lt;type <span class="string">'long'</span>&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="浮点型-float"><a href="#浮点型-float" class="headerlink" title="浮点型(float)"></a>浮点型(float)</h3><p>浮点数用来处理实数，也就是带有小数的数字。类似于C语言中的double类型，占8个字节（64位），其中52位表示底，11位表示指数，剩下的一位表示符号。</p>
-<h3 id="复数-complex"><a href="#复数-complex" class="headerlink" title="复数(complex)"></a>复数(complex)</h3><p>复数由实数部分和虚数部分组成，一般形式为x＋yj，其中的x是复数的实数部分，y是复数的虚数部分，这里的x和y都是实数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>x=<span class="number">1</span><span class="number">-2j</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.real</span><br><span class="line"><span class="number">1.0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>x.imag</span><br><span class="line"><span class="number">-2.0</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="进制转换"><a href="#进制转换" class="headerlink" title="进制转换"></a>进制转换</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bin(var) # 把变量转换为2进制</span><br><span class="line">oct(var) # 把变量转换为8进制</span><br><span class="line">int(var) # 把变量转换为10进制</span><br><span class="line">hex(var) # 把变量转换为16进制</span><br></pre></td></tr></table></figure>
-
-<h3 id="小知识点"><a href="#小知识点" class="headerlink" title="小知识点"></a>小知识点</h3><ul>
-<li>Python中存在小数字池：<code>-5 ～ 256，即[-5,257]</code></li>
+        <h2 id="字符集-amp-编码详解"><a href="#字符集-amp-编码详解" class="headerlink" title="字符集&amp;编码详解"></a>字符集&amp;编码详解</h2><h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1 定义"></a>1 定义</h3><ul>
+<li>编码/解码（encode/decode）：计算机中储存的信息都是用二进制数表示的；而我们在屏幕上看到的英文、汉字等字符是二进制数转换之后的结果。通俗的说，按照何种规则将字符存储在计算机中，称为”编码”；反之，将存储在计算机中的二进制数解析显示出来，称为”解码”。如果使用了错误的解码规则，则导致解码错误或者乱码。</li>
+<li>字符集（charset）：是一个系统支持的所有抽象字符的集合。字符是各种文字和符号的总称，包括各国家文字、标点符号、图形符号、数字等</li>
+<li>字符编码（character Encoding）：是一套法则，使用该法则能够在符号集合与数字系统之间建立对应关系。</li>
 </ul>
-<p>Python对小整数的定义是[-5,257]这些整数对象是提前建立好的，不会被垃圾回收。在一个Python的程序中，所有位于这个范围内的整数使用的都是同一个对象。<br>同理，单个字母也是这样的。</p>
-<p>在一般情况下当变量被赋值后，内存和变量的关系如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式一</span></span><br><span class="line">n1 = <span class="number">123</span></span><br><span class="line">n2 = <span class="number">123</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-字符集的发展过程"><a href="#2-字符集的发展过程" class="headerlink" title="2 字符集的发展过程"></a>2 字符集的发展过程</h3><h4 id="2-1-ASCII-字符集-amp-编码"><a href="#2-1-ASCII-字符集-amp-编码" class="headerlink" title="2.1. ASCII 字符集&amp;编码"></a>2.1. ASCII 字符集&amp;编码</h4><p>ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是基于拉丁字母的一套电脑编码系统。它主要用于显示现代英语，而其扩展版本EASCII则可以勉强显示其他西欧语言。</p>
+<ul>
+<li><p>ASCII字符集：主要包括控制字符（回车键、退格、换行键等）；可显示字符（英文大小写字符、阿拉伯数字和西文符号）。</p>
+</li>
+<li><p>ASCII编码：将ASCII字符集转换为计算机可以接受的数字系统的数的规则。使用7位（bits）表示一个字符，共128字符；但是7位编码的字符集只能支持128个字符，为了表示更多的欧洲常用字符对ASCII进行了扩展，ASCII扩展字符集使用8位（bits）表示一个字符，共256字符。ASCII字符集映射到数字编码规则如下图所示：<br><img src="/images/post_imgs/ascii_1.png" alt><br><img src="/images/post_imgs/ascii_2.png" alt></p>
+</li>
+</ul>
+<h4 id="2-2-GBXXXX-字符集-amp-编码"><a href="#2-2-GBXXXX-字符集-amp-编码" class="headerlink" title="2.2. GBXXXX 字符集&amp;编码"></a>2.2. GBXXXX 字符集&amp;编码</h4><p>计算机发明之初只用应用于美国及西方一些发达国家，ASCII能够很好满足用户的需求。但是当中国也有了计算机之后，为了显示中文，必须设计一套编码规则用于将汉字转换为计算机可以接受的数字系统的数。中国为了解决这个问题规定：一个小于127的字符的意义与原来相同，但两个大于127的字符连在一起时，就表示一个汉字，前面的一个字节（他称之为高字节）从0xA1用到 0xF7，后面一个字节（低字节）从0xA1到0xFE，这样我们就可以组合出大约7000多个简体汉字了。在这些编码里，还把数学符号、罗马希腊的 字母、日文的假名们都编进去了，连在ASCII里本来就有的数字、标点、字母都统统重新编了两个字节长的编码，这就是常说的”全角”字符，而原来在127号以下的那些就叫”半角”字符了。上述编码规则就是中国大陆通用的GB2312。GB2312或GB2312-80是中国国家标准简体中文字符集。新加坡等地也采用此编码。GB2312的出现，基本满足了汉字的计算机处理需要，它所收录的汉字已经覆盖中国大陆99.75%的使用频率。对于人名、古汉语等方面出现的罕用字，GB2312不能处理，这导致了后来GBK及GB 18030汉字字符集的出现。</p>
+<p>由于GB2312-80只收录6763个汉字，有不少汉字，并未收录在内。于是微软利用GB 2312-80未使用的编码空间，收录GB13000.1-93全部字符制定了GBK编码，后续国家标准GB18030技术上兼容GBK。<br> <img src="/images/post_imgs/gb2312.png" alt></p>
+<h4 id="2-3-BIG5-字符集-amp-编码"><a href="#2-3-BIG5-字符集-amp-编码" class="headerlink" title="2.3. BIG5 字符集&amp;编码"></a>2.3. BIG5 字符集&amp;编码</h4><p>Big5，又称为大五码或五大码，是使用繁体中文（正体中文）社区中最常用的电脑汉字字符集标准，共收录13060个汉字。2003年，Big5被收录到CNS11643中文标准交换码的附录当中，取得了较正式的地位。这个最新版本被称为Big5-2003。</p>
+<h4 id="2-4-Unicode字符集-amp-UTF编码"><a href="#2-4-Unicode字符集-amp-UTF编码" class="headerlink" title="2.4. Unicode字符集 &amp; UTF编码"></a>2.4. Unicode字符集 &amp; UTF编码</h4><blockquote>
+<p>Unicode是字符集，UTF-32 / UTF-16 / UTF-8是三种字符编码方案</p>
+</blockquote>
+<p>当计算机传到世界各个国家时，为了适合当地语言和字符，设计和实现类似GB232/GBK/GB18030/BIG5的编码方案。这样各搞一套，在本地使用没有问题，一旦出现在网络中，由于不兼容，互相访问就出现了乱码现象。<br>为了解决这个问题，一个伟大的创想产生了——Unicode。Unicode编码系统为表达任意语言的任意字符而设计。它使用4字节的数字来表达每个字母、符号或者表意文字。每个数字代表唯一的至少在某种语言中使用的符号。被几种语言共用的字符通常使用相同的数字来编码，每个字符对应一个数字，每个数字对应一个字符，即不存在二义性。<br>在计算机科学领域中，Unicode（统一码、万国码、单一码、标准万国码）是业界的一种标准，它可以使电脑得以体现世界上数十种文字的系统。Unicode 是基于通用字符集（Universal Character Set）的标准来发展，并且同时也以书本的形式对外发表。Unicode 还不断在扩增，每个新版本插入更多新的字符。直至目前为止的第六版，Unicode 就已经包含了超过十万个字符、一组可用以作为视觉参考的代码图表、一套编码方法与一组标准字符编码、一套包含了上标字、下标字等字符特性的枚举等。</p>
+<ul>
+<li><p>UCS &amp; UNICODE<br>通用字符集（Universal Character Set，UCS）是由ISO制定的ISO 10646标准所定义的标准字符集。历史上存在两个独立的尝试创立单一字符集的组织，即国际标准化组织（ISO）和多语言软件制造商组成的统一码联盟。前者开发的 ISO/IEC 10646 项目，后者开发的统一码项目。因此最初制定了不同的标准。<br>1991年前后，两个项目的参与者都认识到，世界不需要两个不兼容的字符集。于是，虽然两个项目仍都存在，并独立地公布各自的标准。但统一码联盟和ISO/IEC JTC1/SC2都同意保持两者标准的码表兼容，并紧密地共同调整任何未来的扩展。在发布的时候，Unicode一般都会采用有关字码最常见的字型，但ISO 10646一般都尽可能采用Century字型。</p>
+</li>
+<li><p>UTF-32<br>上述使用4字节的数字来表达每个字母、符号，或者表意文字，每个数字代表唯一的至少在某种语言中使用的符号的编码方案，称为UTF-32。UTF-32又称UCS-4是一种将Unicode字符编码的协定，对每个字符都使用4字节。就空间而言，是非常没有效率的。<br>这种方法有其优点，最重要的一点就是可以在常数时间内定位字符串里的第N个字符，因为第N个字符从第4×Nth个字节开始。虽然每一个码位使用固定长定的字节看似方便，它并不如其它Unicode编码使用得广泛。</p>
+</li>
+<li><p>UTF-16<br>尽管有Unicode字符非常多，但是实际上大多数人不会用到超过前65535个以外的字符。因此，就有了另外一种Unicode编码方式，叫做UTF-16(因为16位 = 2字节)。UTF-16将0–65535范围内的字符编码成2个字节。UTF-16编码最明显的优点是它在空间效率上比UTF-32高两倍，因为每个字符只需要2个字节来存储（除去65535范围以外的），而不是UTF-32中的4个字节。</p>
+</li>
+<li><p>UTF-8<br>UTF-8（8-bit Unicode Transformation Format）是一种针对Unicode的可变长度字符编码（定长码），也是一种前缀码。它可以用来表示Unicode标准中的任何字符，且其编码中的第一个字节仍与ASCII兼容，这使得原来处理ASCII字符的软件无须或只须做少部份修改，即可继续使用。因此，它逐渐成为电子邮件、网页及其他存储或传送文字的应用中，优先采用的编码。互联网工程工作小组（IETF）要求所有互联网协议都必须支持UTF-8编码。</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">一、UTF-8优点</span><br><span class="line">1、UTF-8是ASCII的一个超集。因为一个纯ASCII字符串也是一个合法的UTF-8字符串，所以现存的ASCII文本不需要转换。为传统的扩展ASCII字符集设计的软件通常可以不经修改或很少修改就能与UTF-8一起使用。</span><br><span class="line">2、使用标准的面向字节的排序例程对UTF-8排序将产生与基于Unicode代码点排序相同的结果。（尽管这只有有限的有用性，因为在任何特定语言或文化下都不太可能有仍可接受的文字排列顺序。）</span><br><span class="line">3、UTF-8和UTF-16都是可扩展标记语言文档的标准编码。所有其它编码都必须通过显式或文本声明来指定。</span><br><span class="line">4、任何面向字节的字符串搜索算法都可以用于UTF-8的数据（只要输入仅由完整的UTF-8字符组成）。但是，对于包含字符记数的正则表达式或其它结构必须小心。</span><br><span class="line">5、UTF-8字符串可以由一个简单的算法可靠地识别出来。就是，一个字符串在任何其它编码中表现为合法的UTF-8的可能性很低，并随字符串长度增长而减小。举例说，字符值C0,C1,F5至FF从来没有出现。为了更好的可靠性，可以使用正则表达式来统计非法过长和替代值（可以查看W3 FAQ: Multilingual Forms上的验证UTF-8字符串的正则表达式）。</span><br><span class="line"></span><br><span class="line">二、UTF-8缺点</span><br><span class="line">1、因为每个字符使用不同数量的字节编码，所以寻找串中第N个字符是一个O(N)复杂度的操作——即串越长，则需要更多的时间来定位特定的字符。同时，还需要位变换来把字符编码成字节，把字节解码成字符。</span><br></pre></td></tr></table></figure>
 
-<p><img src="/images/post_imgs/integer_1.png" alt></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 方式二</span></span><br><span class="line">n1 = <span class="number">123</span></span><br><span class="line">n2 = n1</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/post_imgs/integer_2.png" alt></p>
-<p>由于python内的优化机制，不论是2.x还是3.x都存在，在-5~257之间的数，如果使用第一种赋值方式，那么他们依然属于同一块内存</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">print(id(n1)) <span class="comment"># 查看变量的内存地址</span></span><br></pre></td></tr></table></figure>
-
+<h4 id="2-5-字符编码发展图"><a href="#2-5-字符编码发展图" class="headerlink" title="2.5. 字符编码发展图"></a>2.5. 字符编码发展图</h4><p>ASCII → GB2312 → GBK1.0 → GB18030 → Unicode → UTF-32 → UTF-16 → UTF-8</p>
 
       
     </div>
@@ -469,7 +478,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="https://elijahyg.github.io/2019/10/11/Python数据类型之数字/" title="Python数据类型之数字" target="_blank" rel="external">https://elijahyg.github.io/2019/10/11/Python数据类型之数字/</a>
+      <a href="https://elijahyg.github.io/2020/02/01/Python字符集&编码详解/" title="Python字符集&amp;编码详解" target="_blank" rel="external">https://elijahyg.github.io/2020/02/01/Python字符集&编码详解/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -499,13 +508,9 @@
   
   <ul class="pager pull-left">
     
-    <li class="prev">
-      <a href="/2019/10/13/Python数据类型之布尔类型/" title="Python数据类型之布尔类型"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
-    </li>
-    
     
     <li class="next">
-      <a href="/2019/09/25/python IDE介绍&环境搭建/" title="python IDE介绍 &amp; 环境搭建"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+      <a href="/2020/01/15/Python运算符/" title="Python运算符"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
     </li>
     
     
