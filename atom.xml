@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://elijahyg.github.io/"/>
-  <updated>2020-04-07T14:43:12.123Z</updated>
+  <updated>2020-04-14T14:07:24.031Z</updated>
   <id>https://elijahyg.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Python包</title>
+    <link href="https://elijahyg.github.io/2020/04/14/Python%E5%8C%85/"/>
+    <id>https://elijahyg.github.io/2020/04/14/Python包/</id>
+    <published>2020-04-14T14:06:48.000Z</published>
+    <updated>2020-04-14T14:07:24.031Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="包"><a href="#包" class="headerlink" title="包"></a>包</h2><h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><p>包是一种通过使用<code>.模块名</code>来组织python模块名称空间的方式。</p><h3 id="导入包的本质"><a href="#导入包的本质" class="headerlink" title="导入包的本质"></a>导入包的本质</h3><p>import 包，产生的名称空间的名字同样来源于文件，即包下的<code>__init__.py</code>文件，导入包本质就是在导入该文件</p><h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ul><li>在导入语句中包含有<code>.</code>，说明是包导入。</li><li>包是目录级的，包是一种包含<code>__init__.py</code>文件的目录。</li><li>import导入文件时，产生名称空间中的名字来源于文件；import导入包，产生的名称空间的名字同样来源于文件，即包下的<code>__init__.py</code>文件，导入包本质就是在导入该文件。</li><li>在python3中，即使包下没有<code>__init__.py</code>文件，import 包仍然不会报错，而在python2中，包下一定要有该文件，否则import导入包报错。</li><li>创建包的目的不是为了运行，而是被导入使用，包只是模块的一种形式而已，包即模块。</li><li>凡是在导入时带<code>.</code>的，<code>.</code>的左边都必须是一个包，否则非法。可以带有一连串的<code>.</code>,但都必须遵循这个原则。</li><li>对于导入包之后，<code>.</code>的左边可以是包,模块，函数，类等,它们都可以用<code>.</code>的方式调用自己的属性。</li><li>对比<code>import item</code> 和<code>from item import name</code>，如果想直接使用<code>name</code>则必须使用后者的导入方式。</li></ul><h3 id="包的使用"><a href="#包的使用" class="headerlink" title="包的使用"></a>包的使用</h3><h4 id="import用法"><a href="#import用法" class="headerlink" title="import用法"></a>import用法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试python文件与包同目录</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> package.nextpackage.models</span><br><span class="line">package.nextpackage.models.models_function(<span class="string">'func_1'</span>)</span><br></pre></td></tr></table></figure><h4 id="from-…-import-…用法"><a href="#from-…-import-…用法" class="headerlink" title="from … import …用法"></a>from … import …用法</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 注意：from ... import ... 中import后面必须是类、方法等，且不能包含点(.)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 测试python文件与包同目录</span></span><br><span class="line"><span class="comment"># 1、导入某个模块</span></span><br><span class="line"><span class="keyword">from</span> package.nextpackage <span class="keyword">import</span> models</span><br><span class="line">models.models_function(<span class="string">'func_1'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2、导入模块中的某个方法</span></span><br><span class="line"><span class="keyword">from</span> package.nextpackage.models <span class="keyword">import</span> models_function</span><br><span class="line">models_function(<span class="string">'func_1'</span>)</span><br></pre></td></tr></table></figure><h4 id="init-py文件"><a href="#init-py文件" class="headerlink" title="__init__.py文件"></a><code>__init__.py</code>文件</h4><p>不管是哪种方式，只要是第一次导入包或者是包的任何其他部分，都会依次执行包下的<code>__init__.py</code>文件，这个文件可以为空，也可以进行一些初始化的工作。</p><h4 id="from-import-用法"><a href="#from-import-用法" class="headerlink" title="from ... import *用法"></a><code>from ... import *</code>用法</h4><ul><li><code>from ... import *</code>意在导入包中所有类、方法等，实际上该语句只会导入包下<code>__init__.py</code>文件中定义的名字，我们可以在这个文件中定义<code>__all__</code>变量</li></ul><h4 id="绝对导入和相对导入"><a href="#绝对导入和相对导入" class="headerlink" title="绝对导入和相对导入"></a>绝对导入和相对导入</h4><ul><li>绝对导入：以项目根路径作为起始</li><li>相对导入：用<code>.</code>或者<code>..</code>的方式最为起始（只能在一个包中使用，不能用于不同目录内）</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 文件路径</span></span><br><span class="line">package/nextpackage/models.py</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 绝对导入</span></span><br><span class="line"><span class="keyword">from</span> package.nextpackage <span class="keyword">import</span> models</span><br><span class="line">models.models_function()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相对导入</span></span><br><span class="line"><span class="keyword">from</span> ..nextpackage <span class="keyword">import</span> models</span><br><span class="line">models.models_function()</span><br></pre></td></tr></table></figure><h4 id="单独导入包"><a href="#单独导入包" class="headerlink" title="单独导入包"></a>单独导入包</h4><ul><li>单独导入包名称时不会导入包中所有包含的所有子模块</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 测试python文件与包同目录，在py程序中直接引入方法</span></span><br><span class="line"><span class="keyword">import</span> package</span><br><span class="line">package.nextpackage.models.models_function()</span><br><span class="line"><span class="comment"># 输出报错</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>AttributeError: module <span class="string">'package'</span> has no attribute <span class="string">'nextpackage'</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 解决方法</span></span><br><span class="line"><span class="comment">#package/__init__.py</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> nextpackage</span><br><span class="line"></span><br><span class="line"><span class="comment">#package/nextpackage/__init__.py</span></span><br><span class="line"><span class="keyword">from</span> . <span class="keyword">import</span> models</span><br><span class="line"></span><br><span class="line"><span class="comment"># 执行结果</span></span><br><span class="line"><span class="comment"># 测试python文件与包同目录</span></span><br><span class="line"><span class="keyword">import</span> package</span><br><span class="line">package.nextpackage.models.models_function()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;包&quot;&gt;&lt;a href=&quot;#包&quot; class=&quot;headerlink&quot; title=&quot;包&quot;&gt;&lt;/a&gt;包&lt;/h2&gt;&lt;h3 id=&quot;概念&quot;&gt;&lt;a href=&quot;#概念&quot; class=&quot;headerlink&quot; title=&quot;概念&quot;&gt;&lt;/a&gt;概念&lt;/h3&gt;&lt;p&gt;包是一种通过使
+      
+    
+    </summary>
+    
+    
+      <category term="Python系列" scheme="https://elijahyg.github.io/categories/Python%E7%B3%BB%E5%88%97/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Python模块</title>
@@ -468,30 +492,6 @@
     
     
       <category term="Go系列" scheme="https://elijahyg.github.io/categories/Go%E7%B3%BB%E5%88%97/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>python语言起源</title>
-    <link href="https://elijahyg.github.io/2019/09/16/python%E8%AF%AD%E8%A8%80%E8%B5%B7%E6%BA%90/"/>
-    <id>https://elijahyg.github.io/2019/09/16/python语言起源/</id>
-    <published>2019-09-16T15:31:15.000Z</published>
-    <updated>2019-09-24T11:44:07.091Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Python语言的前世今生"><a href="#Python语言的前世今生" class="headerlink" title="Python语言的前世今生"></a>Python语言的前世今生</h2><h3 id="Python的诞生"><a href="#Python的诞生" class="headerlink" title="Python的诞生"></a>Python的诞生</h3><p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范·罗苏姆（中文名字：龟叔）为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承。  </p><p>（龟叔：2005年加入谷歌至2012年，2013年加入Dropbox直到现在，依然掌握着Python发展的核心方向，被称为仁慈的独裁者）。<br><img src="/images/post_imgs/Guido_van_Rossum.jpg" alt></p><hr><h3 id="Python版本发展"><a href="#Python版本发展" class="headerlink" title="Python版本发展"></a>Python版本发展</h3><ul><li>1989年，为了打发圣诞节假期，Guido开始写Python语言的编译器。Python这个名字，来自Guido所挚爱的电视剧Monty Python’s Flying Circus。他希望这个新的叫做Python的语言，能符合他的理想：创造一种C和shell之间，功能全面，易学易用，可拓展的语言。</li><li>1991年，第一个Python编译器诞生。它是用C语言实现的，并能够调用C语言的库文件。从一出生，Python已经具有了：类，函数，异常处理，包含表和词典在内的核心数据类型，以及模块为基础的拓展系统。</li><li>Granddaddy of Python web frameworks, Zope 1 was released in 1999</li><li>Python 1.0 - January 1994 增加了 lambda, map, filter and reduce.</li><li>Python 2.0 - October 16, 2000，加入了内存回收机制，构成了现在Python语言框架的基础</li><li>Python 2.4 - November 30, 2004, 同年目前最流行的WEB框架Django 诞生</li><li>Python 2.5 - September 19, 2006</li><li>Python 2.6 - October 1, 2008</li><li>Python 2.7 - July 3, 2010</li><li><strong>In November 2014, it was announced that Python 2.7 would be supported until 2020, and reaffirmed that there would be no 2.8 release as users were expected to move to Python 3.4+ as soon as possible</strong></li><li>Python 3.0 - December 3, 2008</li><li>Python 3.1 - June 27, 2009</li><li>Python 3.2 - February 20, 2011</li><li>Python 3.3 - September 29, 2012</li><li>Python 3.4 - March 16, 2014</li><li>Python 3.5 - September 13, 2015</li><li>Python 3.6 - December 23, 2016</li><li>Python 3.7 - June 27, 2018</li></ul><hr><h3 id="Python的各类解释器"><a href="#Python的各类解释器" class="headerlink" title="Python的各类解释器"></a>Python的各类解释器</h3><ul><li>CPython：官方的解释器，也是使用最广的Python解释器。在CPython解释器下有GIL限制，一个CPU同一时刻只能运行一个线程。</li><li>IPython：是一种比较流行的解释器</li><li>PyPy：一种专注于执行速度的解释器。PyPy采用JIT技术，对Python代码进行动态编译（注意不是解释），所以可以显著提高Python代码的执行速度。</li><li>Jython：运行在Java平台上的Python解释器，可以直接把Python代码编译成Java字节码执行，Jython可以直接调用Java的各种函数库。</li><li>IronPython：和Jython类似，只不过IronPython是运行在微软.Net平台上的Python解释器，可以直接把Python代码编译成.Net的字节码。</li><li>ZhPy：周蟒，支持使用繁/简中文语句编写程序的Python语言</li></ul><hr><h3 id="Python应用领域"><a href="#Python应用领域" class="headerlink" title="Python应用领域"></a>Python应用领域</h3><p>目前Python主要应用领域：</p><ul><li>云计算: 云计算最火的语言， 典型应用OpenStack</li><li>WEB开发: 众多优秀的WEB框架，众多大型网站均为Python开发，Youtube, Dropbox, 豆瓣等等，典型WEB框架有Django、Flask、Tornado、sanic</li><li>科学运算、人工智能: 典型库NumPy, SciPy, Matplotlib, Enthought librarys,pandas</li><li>系统运维: 运维人员必备语言</li><li>金融：量化交易，金融分析，在金融工程领域，Python不但在用，且用的最多，而且重要性逐年提高。</li><li>原因：作为动态语言的Python，语言结构清晰简单，库丰富，成熟稳定，科学计算和统计分析都很牛逼，生产效率远远高于c、c++、java,尤其擅长策略回测</li><li>图形GUI: PyQT、WxPython、TkInter</li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Python语言的前世今生&quot;&gt;&lt;a href=&quot;#Python语言的前世今生&quot; class=&quot;headerlink&quot; title=&quot;Python语言的前世今生&quot;&gt;&lt;/a&gt;Python语言的前世今生&lt;/h2&gt;&lt;h3 id=&quot;Python的诞生&quot;&gt;&lt;a href=&quot;#
-      
-    
-    </summary>
-    
-    
-      <category term="Python系列" scheme="https://elijahyg.github.io/categories/Python%E7%B3%BB%E5%88%97/"/>
     
     
   </entry>
