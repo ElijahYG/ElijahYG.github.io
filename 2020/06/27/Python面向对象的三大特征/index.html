@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Python面向对象的三大特征 | Yang&#39;s Blog</title>
+  <meta name="description" content="面向对象三大特征封装、继承、多态作为面向对象编程的三大特征，其概念也是循序渐进的，首先需要有类的概念，随后将类进行封装，对外只暴露需要暴露的部分，简化对外交互；而后类与类之间会有继承关系；进而有了多态的概念。 封装概念封装是指一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端访问对象内部实现细节的手段。 原则封装的目的是隐藏对象的属性和实现细节，仅对外公开访问方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python面向对象的三大特征">
+<meta property="og:url" content="https://elijahyg.github.io/2020/06/27/Python面向对象的三大特征/index.html">
+<meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="面向对象三大特征封装、继承、多态作为面向对象编程的三大特征，其概念也是循序渐进的，首先需要有类的概念，随后将类进行封装，对外只暴露需要暴露的部分，简化对外交互；而后类与类之间会有继承关系；进而有了多态的概念。 封装概念封装是指一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端访问对象内部实现细节的手段。 原则封装的目的是隐藏对象的属性和实现细节，仅对外公开访问方">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-06-27T10:23:03.074Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python面向对象的三大特征">
+<meta name="twitter:description" content="面向对象三大特征封装、继承、多态作为面向对象编程的三大特征，其概念也是循序渐进的，首先需要有类的概念，随后将类进行封装，对外只暴露需要暴露的部分，简化对外交互；而后类与类之间会有继承关系；进而有了多态的概念。 封装概念封装是指一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端访问对象内部实现细节的手段。 原则封装的目的是隐藏对象的属性和实现细节，仅对外公开访问方">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://elijahyg.github.io/2020/06/27/Python面向对象的三大特征/index.html">
+  
+  
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ElijahYG" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Elijah Yang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>顺境内敛 逆境不屈</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go系列/">Go系列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python系列/">Python系列</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/06/27/Python面向对象的三大特征/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/27/Python面向对象的三大特征/" class="title">Python面向对象的三大特征</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-27T10:21:47.000Z" itemprop="datePublished">2020-06-27</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/06/07/Python面向对象初识/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/06/07/Python面向对象初识/" class="title">Python面向对象初识</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-06-07T12:19:28.000Z" itemprop="datePublished">2020-06-07</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/05/10/Python常用的模块&包/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/05/10/Python常用的模块&包/" class="title">Python常用的模块&amp;包</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-05-10T15:07:02.000Z" itemprop="datePublished">2020-05-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/04/14/Python包/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/14/Python包/" class="title">Python包</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-14T14:06:48.000Z" itemprop="datePublished">2020-04-14</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2020/04/07/Python模块/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2020/04/07/Python模块/" class="title">Python模块</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2020-04-07T14:41:44.000Z" itemprop="datePublished">2020-04-07</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象三大特征"><span class="toc-number">1.</span> <span class="toc-text">面向对象三大特征</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#封装"><span class="toc-number">1.1.</span> <span class="toc-text">封装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念"><span class="toc-number">1.1.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#原则"><span class="toc-number">1.1.2.</span> <span class="toc-text">原则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#评价标准"><span class="toc-number">1.1.3.</span> <span class="toc-text">评价标准</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#继承"><span class="toc-number">1.2.</span> <span class="toc-text">继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念-1"><span class="toc-number">1.2.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#抽象"><span class="toc-number">1.2.2.</span> <span class="toc-text">抽象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承-1"><span class="toc-number">1.2.3.</span> <span class="toc-text">继承</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#继承相关名词概念解释"><span class="toc-number">1.2.4.</span> <span class="toc-text">继承相关名词概念解释</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#抽象类-amp-接口类"><span class="toc-number">1.2.5.</span> <span class="toc-text">抽象类&amp;接口类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多态"><span class="toc-number">1.3.</span> <span class="toc-text">多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#概念-2"><span class="toc-number">1.3.1.</span> <span class="toc-text">概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多态性"><span class="toc-number">1.3.2.</span> <span class="toc-text">多态性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#鸭子类型（Duck-Type）"><span class="toc-number">1.3.3.</span> <span class="toc-text">鸭子类型（Duck Type）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#示例"><span class="toc-number">1.3.4.</span> <span class="toc-text">示例</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Python面向对象的三大特征" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python面向对象的三大特征
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/06/27/Python面向对象的三大特征/" class="article-date">
+	  <time datetime="2020-06-27T10:21:47.000Z" itemprop="datePublished">2020-06-27</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python系列/">Python系列</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/06/27/Python面向对象的三大特征/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 7(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="面向对象三大特征"><a href="#面向对象三大特征" class="headerlink" title="面向对象三大特征"></a>面向对象三大特征</h2><p>封装、继承、多态作为面向对象编程的三大特征，其概念也是循序渐进的，首先需要有类的概念，随后将类进行封装，对外只暴露需要暴露的部分，简化对外交互；而后类与类之间会有继承关系；进而有了多态的概念。</p>
+<h3 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h3><h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p>封装是指一种将抽象性函数接口的实现细节部分包装、隐藏起来的方法。同时，它也是一种防止外界调用端访问对象内部实现细节的手段。</p>
+<h4 id="原则"><a href="#原则" class="headerlink" title="原则"></a>原则</h4><p>封装的目的是隐藏对象的属性和实现细节，仅对外公开访问方法，并且控制访问级别。所以对于封装的原则，大致可以归纳为高内聚，低耦合。<br>1、高内聚：高内聚是指一个模块中各个部分之间关联应该是紧密的。<br>2、低耦合：低耦合是指多个模块之间的关联应该是松散的。</p>
+<h4 id="评价标准"><a href="#评价标准" class="headerlink" title="评价标准"></a>评价标准</h4><p>不同程序员对于同样的类也可能会有不同的封装方法，评价类是否较好的完成封装这一特征的标准大致包含以下几方面：</p>
+<ul>
+<li>功能单一性</li>
+<li>可扩展性</li>
+<li>明确的输入输出</li>
+</ul>
+<hr>
+<h3 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h3><h4 id="概念-1"><a href="#概念-1" class="headerlink" title="概念"></a>概念</h4><p>继承是一种创建新类的方式，在python中，新建的类可以继承一个或多个父类，父类又可称为基类或超类，新建的类称为派生类或子类。</p>
+<h4 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h4><p>所谓抽象，与我们平时理解的抽象大致相同。就是将有共同特征的一类事物进行归纳，将其共有的、本质性的特征归纳抽象出来。</p>
+<h4 id="继承-1"><a href="#继承-1" class="headerlink" title="继承"></a>继承</h4><p>所谓继承，就是基于抽象出来的共同特征定义父类之后，需要定义和父类具有相同的属性和方法的子类，即称子类继承于父类，子类中仍可以重新定义、追加属性和方法等。</p>
+<ul>
+<li>继承与重用的区别<br>所谓代码重用是将已经编写完成的代码复制，在新的编码中重用之前程序已经完成的代码功能，代码重用可以虽然可以节省开发周期，简化编码难度。<br>而继承与重用的核心区别就是继承是基于对类进行抽象之后，对于类进行的抽象归纳之后认为其所具有的相同的方法/属性。对于编码而言，不需要将原有代码复制到新的编码之中，而只需要声明其继承于某个已经完成的类作为父类即可。相比重用，减少了代码量，增加了代码的可读性。</li>
+</ul>
+<h4 id="继承相关名词概念解释"><a href="#继承相关名词概念解释" class="headerlink" title="继承相关名词概念解释"></a>继承相关名词概念解释</h4><ul>
+<li><p>父类 &amp; 子类<br>所谓父类即作为抽象的类可以产生相关子类的类。<br>所谓子类就是通过继承其他类所创建出来的类。</p>
+</li>
+<li><p>基类 &amp; 派生类<br>基类概念同父类，派生类概念同子类。</p>
+</li>
+<li><p>新式类 &amp; 经典类</p>
+<ul>
+<li><p>新式类：<br>1、在Python 3.x中取消了经典类，默认都是新式类，创建新式类时不必显式的继承object。<br>2、新式类多继承的原则是：广度优先。总结而言，即在新式类中对于子类继承多个父类的情况，如果继承的多个父类中有属性相同的，则越<code>靠后</code>继承的父类中的属性会覆盖靠前继承的父类的相同属性。<br>3、新式类中增加了<code>__slots__</code>内置属性, <code>__slots__</code>的作用是可以限定实例属性的种类。<br>4、新式类中增加了<code>__getattribute__</code>方法，对于访问类/实例中任何存在与否的方法/属性时都会调用<code>__getattribute__</code>方法。<br>5、新式类内置增加了<code>__new__</code>方法。</p>
+</li>
+<li><p>经典类：<br>1、在Python2.x中，默认都是经典类，只有显式继承了object创建的才是新式类。<br>2、经典类多继承的原则是：深度优先。总结而言，即在新式类中对于子类继承多个父类的情况，如果继承的多个父类中有属性相同的，则越<code>靠前</code>继承的父类中的属性会覆盖靠后继承的父类的相同属性。</p>
+</li>
+</ul>
+</li>
+<li><p>单继承 &amp; 多继承<br>单继承是指子类只可以继承自一个父类。<br>多继承是指一个子类同时继承自多个父类。</p>
+</li>
+</ul>
+<h4 id="抽象类-amp-接口类"><a href="#抽象类-amp-接口类" class="headerlink" title="抽象类&amp;接口类"></a>抽象类&amp;接口类</h4><ul>
+<li>抽象类<br>抽象类只能被继承，而不能被实例化。其作用在于规定继承它的子类需要实现什么方法，而不是其本身实现了什么功能。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc  <span class="comment"># 利用abc模块实现抽象类</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义父类Person</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(metaclass=abc.ABCMeta)</span>:</span></span><br><span class="line">    all_type = <span class="string">'person'</span></span><br><span class="line"><span class="meta">    @abc.abstractmethod  # 定义抽象方法，无需具体实现</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'子类需定义睡觉方法'</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="meta">    @abc.abstractmethod  # 定义抽象方法，无需具体实现</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'子类需定义吃饭方法'</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Student</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Student</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="keyword">pass</span></span><br><span class="line">student = Student()  <span class="comment"># 此处抛出异常，因为子类没有定义抽象方法</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Worker</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Worker睡觉方法'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Worker吃方法'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Teacher</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Teacher睡觉方法'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Teacher吃方法'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Farmer</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Farmer</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sleep</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Farmer睡觉方法'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Farmer吃方法'</span>)</span><br><span class="line"></span><br><span class="line">worker=Worker()</span><br><span class="line"></span><br><span class="line">teacher=Teacher()</span><br><span class="line"></span><br><span class="line">farmer=Farmer()</span><br><span class="line"></span><br><span class="line"><span class="comment">#  此处体现了归一化思想，即相同方法在不同子类中的具体实现不同，但是调用者的调用方式相同</span></span><br><span class="line">worker.sleep()</span><br><span class="line">worker.eat()</span><br><span class="line"></span><br><span class="line">teacher.sleep()</span><br><span class="line">teacher.eat()</span><br><span class="line"></span><br><span class="line">farmer.sleep()</span><br><span class="line">farmer.eat()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>接口类<br>继承的作用可以大致分类两方面：代码复用和实现接口继承。<br>那么，什么是接口继承呢？接口继承的意义在于需要一种抽象类，该抽象类实现了一种兼容功能，使得调用者无需关心类的内部实现细节，便可以统一处理特定接口。这被称为”归一化”。归一化的意义在于外部功能的调用者不用关注细节，便可以统一的处理所有接口兼容的对象。<br>同时，便要引出编程的”依赖倒置”原则。即：<br>1、高层模块不应该依赖低层模块，二者都应该依赖其抽象；<br>2、抽象不应该应该依赖细节，细节应该依赖抽象。<br>总而言之，即程序要针对接口编程，而不是针对实现编程</li>
+</ul>
+<hr>
+<h3 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h3><h4 id="概念-2"><a href="#概念-2" class="headerlink" title="概念"></a>概念</h4><p>多态指的是一类事物具有多种形态，同时，多态是继承的具体展现形式。</p>
+<h4 id="多态性"><a href="#多态性" class="headerlink" title="多态性"></a>多态性</h4><p>多态性是指在不考虑实例类型的情况下使用实例。</p>
+<h4 id="鸭子类型（Duck-Type）"><a href="#鸭子类型（Duck-Type）" class="headerlink" title="鸭子类型（Duck Type）"></a>鸭子类型（Duck Type）</h4><ul>
+<li>鸭子类型概念<br>If it walks like a duck and quacks like a duck, it must be a duck。(如果它走起路来像鸭子，叫起来也像鸭子，那么它就是鸭子。)<br>鸭子类型是计算机领域中的一种设计风格，其意义即对象的特征不取决于其父类，而取决于对象本身的实现。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> abc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义父类Person</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(metaclass=abc.ABCMeta)</span>:</span></span><br><span class="line"><span class="meta">    @abc.abstractmethod</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'子类需定义吃饭方法'</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Worker</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Worker</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Worker吃方法'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Teacher</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Teacher</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Teacher吃方法'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 定义子类Farmer</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Farmer</span><span class="params">(Person)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">eat</span><span class="params">(self)</span>:</span></span><br><span class="line">        print(<span class="string">'Farmer吃方法'</span>)</span><br><span class="line"></span><br><span class="line">worker=Worker()</span><br><span class="line">teacher=Teacher()</span><br><span class="line">farmer=Farmer()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此处worker、teacher、farmer都有吃的方法，但是具体的实现不同，所以eat方法本身不取决于Person父类中的eat方法，而是由每个子类所产生的实例自己决定</span></span><br><span class="line">worker.eat()</span><br><span class="line">teacher.eat()</span><br><span class="line">farmer.eat()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 我们也可以进一步的统一调用方式</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">someone_eat</span><span class="params">(obj)</span>:</span></span><br><span class="line">    obj.eat()</span><br><span class="line"></span><br><span class="line">someone_eat(worker)</span><br><span class="line">someone_eat(teacher)</span><br><span class="line">someone_eat(farmer)</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://elijahyg.github.io/2020/06/27/Python面向对象的三大特征/" title="Python面向对象的三大特征" target="_blank" rel="external">https://elijahyg.github.io/2020/06/27/Python面向对象的三大特征/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 国际许可协议</a>进行许可。
+    </li>
+  </ul>
+</blockquote>
+
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2020/06/07/Python面向对象初识/" title="Python面向对象初识"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'e9a82c38e4a1a8590a33',
+    clientSecret: 'bf3deb8d2b72a593c950e26693e5c56bf98a7bac',
+    repo: 'ElijahYG.github.io',
+    owner: 'ElijahYG',
+    admin: ['ElijahYG'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
