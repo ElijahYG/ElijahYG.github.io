@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://elijahyg.github.io/about/index.html</loc>
+    
+    <lastmod>2021-01-10T11:45:36.124Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://elijahyg.github.io/2019/09/16/Python%E7%B3%BB%E5%88%97/</loc>
     
     <lastmod>2021-01-10T09:03:12.956Z</lastmod>
@@ -124,13 +131,6 @@
     <loc>https://elijahyg.github.io/2020/03/28/Python%E8%BF%AD%E4%BB%A3%E5%99%A8&%E7%94%9F%E6%88%90%E5%99%A8/</loc>
     
     <lastmod>2020-03-28T08:07:11.582Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://elijahyg.github.io/about/index.html</loc>
-    
-    <lastmod>2020-03-14T11:04:21.181Z</lastmod>
     
   </url>
   
