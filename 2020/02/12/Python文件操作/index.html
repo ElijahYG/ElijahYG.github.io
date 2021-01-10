@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000">
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top">
+  
+  
+  <title>Python文件操作 | Yang&#39;s Blog</title>
+  <meta name="description" content="文件操作文件操作介绍众所周知，文件是存储在硬盘或者其他外部存储设备之中的，我们想要操作文件对其内容进行修改的话就涉及到了应用程序对硬件的操作，但是应用程序是无法直接操作硬件设备的，需要操作系统对硬件设备进行操作，所以我们所说的文件操作，其本质上是应用程序利用操作系统所提供的的接口间接的对硬件设备进行操作的。Python语言进行文件操作需要利用open()函数，open()函数获取文件流来对文件内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python文件操作">
+<meta property="og:url" content="https://elijahyg.github.io/2020/02/12/Python文件操作/index.html">
+<meta property="og:site_name" content="Yang&#39;s Blog">
+<meta property="og:description" content="文件操作文件操作介绍众所周知，文件是存储在硬盘或者其他外部存储设备之中的，我们想要操作文件对其内容进行修改的话就涉及到了应用程序对硬件的操作，但是应用程序是无法直接操作硬件设备的，需要操作系统对硬件设备进行操作，所以我们所说的文件操作，其本质上是应用程序利用操作系统所提供的的接口间接的对硬件设备进行操作的。Python语言进行文件操作需要利用open()函数，open()函数获取文件流来对文件内容">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-02-12T15:27:31.959Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Python文件操作">
+<meta name="twitter:description" content="文件操作文件操作介绍众所周知，文件是存储在硬盘或者其他外部存储设备之中的，我们想要操作文件对其内容进行修改的话就涉及到了应用程序对硬件的操作，但是应用程序是无法直接操作硬件设备的，需要操作系统对硬件设备进行操作，所以我们所说的文件操作，其本质上是应用程序利用操作系统所提供的的接口间接的对硬件设备进行操作的。Python语言进行文件操作需要利用open()函数，open()函数获取文件流来对文件内容">
+  <!-- Canonical links -->
+  <link rel="canonical" href="https://elijahyg.github.io/2020/02/12/Python文件操作/index.html">
+  
+  
+    <link rel="icon" href="images/logo.ico" type="image/x-icon">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+  
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.css">
+  
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/ElijahYG" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">Elijah Yang</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav ">
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>顺境内敛 逆境不屈</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Go系列/">Go系列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python系列/">Python系列</a><span class="category-list-count">35</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/其他/">其他</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+
+    
+      
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">十一月 2019</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/10/">十月 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/09/">九月 2019</a><span class="archive-list-count">5</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled ">
+        
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2021/01/10/PythonIO多路复用/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/10/PythonIO多路复用/" class="title">PythonIO多路复用</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-10T08:50:44.000Z" itemprop="datePublished">2021-01-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2021/01/10/Python中协程/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/10/Python中协程/" class="title">Python中协程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-10T08:50:31.000Z" itemprop="datePublished">2021-01-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2021/01/10/Python中（多）线程/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/10/Python中（多）线程/" class="title">Python中（多）线程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-10T08:49:41.000Z" itemprop="datePublished">2021-01-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2021/01/10/Python中（多）进程/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/10/Python中（多）进程/" class="title">Python中（多）进程</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-10T08:49:32.000Z" itemprop="datePublished">2021-01-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-thumb">
+              <a href="/2021/01/10/Python进程线程初识/" class="thumb">
+    
+    
+        <span class="thumb-image thumb-none"></span>
+    
+</a>
+
+            </div>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/Python系列/">Python系列</a>
+              </p>
+              <p class="item-title">
+                <a href="/2021/01/10/Python进程线程初识/" class="title">Python进程线程初识</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2021-01-10T08:43:47.000Z" itemprop="datePublished">2021-01-10</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#文件操作"><span class="toc-number">1.</span> <span class="toc-text">文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#文件操作介绍"><span class="toc-number">1.1.</span> <span class="toc-text">文件操作介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#文件打开方式"><span class="toc-number">1.2.</span> <span class="toc-text">文件打开方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#文件句柄方式"><span class="toc-number">1.2.1.</span> <span class="toc-text">文件句柄方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#上下文方式"><span class="toc-number">1.2.2.</span> <span class="toc-text">上下文方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#操作文件"><span class="toc-number">1.3.</span> <span class="toc-text">操作文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#读"><span class="toc-number">1.3.1.</span> <span class="toc-text">读</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#写"><span class="toc-number">1.3.2.</span> <span class="toc-text">写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#追加"><span class="toc-number">1.3.3.</span> <span class="toc-text">追加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件修改"><span class="toc-number">1.3.4.</span> <span class="toc-text">文件修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他操作"><span class="toc-number">1.3.5.</span> <span class="toc-text">其他操作</span></a></li></ol></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-Python文件操作" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python文件操作
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2020/02/12/Python文件操作/" class="article-date">
+	  <time datetime="2020-02-12T15:26:38.000Z" itemprop="datePublished">2020-02-12</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/Python系列/">Python系列</a>
+  </span>
+
+        
+
+        
+	<span class="article-read hidden-xs">
+	    <i class="icon icon-eye-fill" aria-hidden="true"></i>
+	    <span id="busuanzi_container_page_pv">
+			<span id="busuanzi_value_page_pv">0</span>
+		</span>
+	</span>
+
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/02/12/Python文件操作/#comments" class="article-comment-link">评论</a></span>
+        
+	
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 2k(字)</span>
+	
+	
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 9(分)</span>
+	
+
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h2><h3 id="文件操作介绍"><a href="#文件操作介绍" class="headerlink" title="文件操作介绍"></a>文件操作介绍</h3><p>众所周知，文件是存储在硬盘或者其他外部存储设备之中的，我们想要操作文件对其内容进行修改的话就涉及到了应用程序对硬件的操作，但是应用程序是无法直接操作硬件设备的，需要操作系统对硬件设备进行操作，所以我们所说的文件操作，其本质上是应用程序利用操作系统所提供的的接口间接的对硬件设备进行操作的。<br>Python语言进行文件操作需要利用open()函数，open()函数获取文件流来对文件内容进行操作，这个流实际上就是一个I/O通道，即通常所说文件描述符。</p>
+<hr>
+<h3 id="文件打开方式"><a href="#文件打开方式" class="headerlink" title="文件打开方式"></a>文件打开方式</h3><h4 id="文件句柄方式"><a href="#文件句柄方式" class="headerlink" title="文件句柄方式"></a>文件句柄方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 打开文件，得到文件句柄并赋值给一个变量</span></span><br><span class="line">f = open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 通过句柄对文件进行操作</span></span><br><span class="line">content = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.输出读取到的结果</span></span><br><span class="line">print(content)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 关闭文件</span></span><br><span class="line">f.close()</span><br><span class="line"></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>文件中的内容：</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>python</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>java</span><br></pre></td></tr></table></figure>
+
+<h4 id="上下文方式"><a href="#上下文方式" class="headerlink" title="上下文方式"></a>上下文方式</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. with关键字引导上下文方式打开文件，并将句柄赋予别名f</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 通过句柄对文件进行操作</span></span><br><span class="line">    content = f.read()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3.输出读取到的结果，用with上下文方式对文件进行操作会在结束操作时默认关闭文件，不必要主动close()</span></span><br><span class="line">    print(content)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="操作文件"><a href="#操作文件" class="headerlink" title="操作文件"></a>操作文件</h3><p><code>语法：open(file, mode=&#39;r&#39;, buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)</code></p>
+<table>
+<thead>
+<tr>
+<th align="center">操作符</th>
+<th align="left">作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">‘r’</td>
+<td align="left">读取文件（默认）</td>
+</tr>
+<tr>
+<td align="center">‘w’</td>
+<td align="left">覆盖写入文件</td>
+</tr>
+<tr>
+<td align="center">‘a’</td>
+<td align="left">追加写入文件</td>
+</tr>
+<tr>
+<td align="center">‘b’</td>
+<td align="left">二进制模式</td>
+</tr>
+<tr>
+<td align="center">‘t’</td>
+<td align="left">文本模式（默认）</td>
+</tr>
+<tr>
+<td align="center">‘+’</td>
+<td align="left">更新文件（读取与写入）</td>
+</tr>
+<tr>
+<td align="center"><code>~~&#39;U&#39;~~</code></td>
+<td align="left">universal newline mode (在 Python 3.0 中成为默认行为)</td>
+</tr>
+</tbody></table>
+<h4 id="读"><a href="#读" class="headerlink" title="读"></a>读</h4><ul>
+<li><code>mode=&#39;r&#39;</code>：只读，文件不存在则报错</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'r'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()</span><br><span class="line">    print(content)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>mode=&#39;rb&#39;</code>：以bytes类型读</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'rb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()</span><br><span class="line">    print(content)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xba\xba\xe7\x94\x9f\xe8\x8b\xa6\xe7\x9f\xad\xef\xbc\x8c\xe6\x88\x91\xe7\x94\xa8python'</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>mode=&#39;r+&#39;</code>：读写，文件不存在不会创建，写则会在指针后添加内容</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'r+'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()</span><br><span class="line">    f.write(<span class="string">'\n新添加：Life is short , I use python'</span>)</span><br><span class="line">    print(content)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br><span class="line"><span class="comment"># target_file.txt中的内容为：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>新添加：Life <span class="keyword">is</span> short , I use python</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>mode=&#39;r+b&#39;</code>：以bytes类型读写</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'r+b'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.read()</span><br><span class="line">    f.write(<span class="string">'\n新添加：Life is short , I use python'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">    print(content)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xba\xba\xe7\x94\x9f\xe8\x8b\xa6\xe7\x9f\xad\xef\xbc\x8c\xe6\x88\x91\xe7\x94\xa8python'</span></span><br><span class="line"><span class="comment"># target_file.txt中的内容为：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>新添加：Life <span class="keyword">is</span> short , I use python</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h4 id="写"><a href="#写" class="headerlink" title="写"></a>写</h4><ul>
+<li><code>mode=&#39;w&#39;</code>：只写，文件不存在则创建，文件存在则清空再写</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为空，需要向其中写入：人生苦短，我用python</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'人生苦短，我用python'</span>)</span><br><span class="line"><span class="comment"># target_file.txt中的内容为：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>mode=&#39;x&#39;</code>：只写，文件不存在则创建，文件存在则报错</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为空，需要向其中写入：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'x'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'人生苦短，我用python'</span>)</span><br><span class="line"><span class="comment"># target_file.txt存在：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>Traceback (most recent call last):</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>File <span class="string">"D:/file_operate.py"</span>, line <span class="number">94</span>, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'x'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>FileExistsError: [Errno <span class="number">17</span>] File exists: <span class="string">'target_file.txt'</span></span><br><span class="line"><span class="comment"># target_file.txt不存在：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>mode=&#39;wb&#39;</code>：以bytes类型写</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为空，需要向其中写入：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'wb'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'人生苦短，我用python'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br><span class="line"></span><br><span class="line"><span class="comment"># # ④w+——写读，文件不存在则创建，写会覆盖之前的内容</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'w+'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'hello,world'</span>)</span><br><span class="line">    date = f.read()</span><br><span class="line">    print(date)</span><br><span class="line">&gt;&gt;&gt;</span><br><span class="line"><span class="comment"># target_file.txt中的内容为：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hello,world</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>mode=&#39;w+b&#39;</code>：以bytes类型写读</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># target_file.txt文件中原始内容为空，需要向其中写入：人生苦短，我用python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'w+b'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'hello,world'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">    date = f.read()</span><br><span class="line">    print(date)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b''</span></span><br><span class="line"><span class="comment"># target_file.txt中的内容为：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hello,world</span><br></pre></td></tr></table></figure>
+
+<h4 id="追加"><a href="#追加" class="headerlink" title="追加"></a>追加</h4><ul>
+<li><code>mode=&#39;a&#39;</code>：追加，文件不存在则创建，文件存在则追加</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此处target_file.txt文件中原始内容为：人生苦短，我用python，需要在后面添加'谁用谁知道'内容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'谁用谁知道'</span>)</span><br><span class="line">target_file.txt中的内容为：</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python谁用谁知道</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>mode=&#39;ab&#39;</code>：以bytes类型追加</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此处target_file.txt文件中原始内容为：人生苦短，我用python，需要在后面添加'谁用谁知道'内容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'ab'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'谁用谁知道'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python谁用谁知道</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>mode=&#39;a+&#39;</code>：可读可写，文件不存在则创建，写则追加</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此处target_file.txt文件中原始内容为：人生苦短，我用python，需要在后面添加'谁用谁知道'内容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'a+'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'谁用谁知道'</span>)</span><br><span class="line">    f.seek(<span class="number">0</span>)</span><br><span class="line">    date = f.read()</span><br><span class="line">    print(date)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python谁用谁知道</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><code>mode=&#39;a+b&#39;</code>：以bytes类型可读可写</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 此处target_file.txt文件中原始内容为：人生苦短，我用python，需要在后面添加'谁用谁知道'内容</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'a+b'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    content = f.write(<span class="string">'谁用谁知道'</span>.encode(<span class="string">'utf-8'</span>))</span><br><span class="line">    f.seek(<span class="number">0</span>)</span><br><span class="line">    date = f.read()</span><br><span class="line">    print(date)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'\xe4\xba\xba\xe7\x94\x9f\xe8\x8b\xa6\xe7\x9f\xad\xef\xbc\x8c\xe6\x88\x91\xe7\x94\xa8python\xe8\xb0\x81\xe7\x94\xa8\xe8\xb0\x81\xe7\x9f\xa5\xe9\x81\x93'</span></span><br><span class="line"><span class="comment"># target_file.txt中的内容为：</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python谁用谁知道</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件修改"><a href="#文件修改" class="headerlink" title="文件修改"></a>文件修改</h4><blockquote>
+<p>python没有提供直接修改文件的函数，只能新建文件，将源文件的内容修改完成后写入新文件中，再把原文件删除，新文件重命名</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'源文件'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f, open(<span class="string">'源文件.bak'</span>, mode=<span class="string">'w'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f_w:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">        <span class="keyword">if</span> <span class="string">'源文件'</span> <span class="keyword">in</span> i:</span><br><span class="line">            i = i.replace(<span class="string">'源文件'</span>, <span class="string">'更改后的源文件'</span>)</span><br><span class="line">        f_w.write(i)</span><br><span class="line"></span><br><span class="line">os.remove(<span class="string">'源文件'</span>)</span><br><span class="line">os.rename(<span class="string">'源文件.bak'</span>,<span class="string">'源文件'</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他操作"><a href="#其他操作" class="headerlink" title="其他操作"></a>其他操作</h4><ul>
+<li><p>seek() 移动光标指针位置<br>seek有三种移动方式0，1，2，其中1和2必须在b模式下进行，但无论哪种模式，都是以bytes为单位移动的</p>
+</li>
+<li><p>tell() 返回当前指针所在的位置<br>tell对于英文字符就是占一个,中文字符占三个,参数表示的是字节数区分与read()的不同。</p>
+</li>
+<li><p>truncate() 截断文件<br>truncate是截断文件，所以文件的打开方式必须可写，但是不能用w或w+等方式打开，因为那样直接清空文件了，所以truncate要在r+或a或a+等模式下测试效果。</p>
+</li>
+<li><p>readline() 读取一行</p>
+</li>
+<li><p>readlines() 读取多行，返回为列表</p>
+</li>
+<li><p>readable() 文件是否可读</p>
+</li>
+<li><p>writeline() 写入一行</p>
+</li>
+<li><p>writelines() 写入多行</p>
+</li>
+<li><p>writable() 文件是否可读</p>
+</li>
+<li><p>closed() 文件是否关闭</p>
+</li>
+<li><p>encoding=’utf-8’ 如果文件打开模式为b,则没有该属性</p>
+</li>
+<li><p>flush() 立刻将文件内容从内存刷到硬盘</p>
+</li>
+<li><p>for循环文件句柄</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> open(<span class="string">'target_file.txt'</span>, mode=<span class="string">'r'</span>,encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> f:</span><br><span class="line">        print(i)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>人生苦短，我用python</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>谁用谁知道</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://elijahyg.github.io/2020/02/12/Python文件操作/" title="Python文件操作" target="_blank" rel="external">https://elijahyg.github.io/2020/02/12/Python文件操作/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/80x15.png" /></a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0 国际许可协议</a>进行许可。
+    </li>
+  </ul>
+</blockquote>
+
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+           
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    <li class="prev">
+      <a href="/2020/02/26/Python初识函数/" title="Python初识函数"><i class="icon icon-angle-left" aria-hidden="true"></i><span>&nbsp;&nbsp;上一篇</span></a>
+    </li>
+    
+    
+    <li class="next">
+      <a href="/2020/02/01/Python字符集&编码详解/" title="Python字符集&amp;编码详解"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/ElijahYG" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+
+    <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+
+
+
+
+   
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+   
+    
+  <!-- <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css"> -->
+  <script src="//cdn.jsdelivr.net/npm/gitalk@1.5.2/dist/gitalk.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/blueimp-md5@2.10.0/js/md5.min.js"></script>
+  <script type="text/javascript">
+  var gitalk = new Gitalk({
+    clientID: 'e9a82c38e4a1a8590a33',
+    clientSecret: 'bf3deb8d2b72a593c950e26693e5c56bf98a7bac',
+    repo: 'ElijahYG.github.io',
+    owner: 'ElijahYG',
+    admin: ['ElijahYG'],
+    id: md5(location.pathname),
+    distractionFreeMode: true
+  })
+  gitalk.render('comments')
+  </script>
+
+      
+
+
+
+
+
+
+
+</body>
+</html>
